@@ -9,24 +9,16 @@ import { AuthProvider } from "./features/auth/context/AuthContext";
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/CreateProgram" element={<CreateProgram />} />
-          <Route
-            path="/ExecuteProgram/:programId"
-            element={<ExecuteProgram />}
-          />
-          <Route
-            path="/CurrentSession/:programId/:workoutId"
-            element={<CurrentSession />}
-          />
-          <Route
-            path="/ListOfUsersPrograms"
-            element={<ListOfUsersPrograms />}
-          />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/CreateProgram" element={<CreateProgram />} />
+        <Route path="/ExecuteProgram/:programId" element={<ExecuteProgram />} />
+        <Route
+          path="/CurrentSession/:programId/:workoutId"
+          element={<CurrentSession />}
+        />
+        <Route path="/ListOfUsersPrograms" element={<ListOfUsersPrograms />} />
+      </Routes>
     </AuthProvider>
   );
 }
