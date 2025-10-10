@@ -1,0 +1,361 @@
+.current-session-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    background: #1E1E1E;
+    /* Dark charcoal background */
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
+    /* Electric blue shadow */
+}
+
+.session-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #3A3A3A;
+    /* Darker border */
+}
+
+.session-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #00BFFF;
+    /* Electric blue */
+    margin-bottom: 0.5rem;
+}
+
+.session-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    color: #00BFFF;
+    /* Electric blue */
+    margin-bottom: 1rem;
+}
+
+.btn-back {
+    background: #00BFFF;
+    /* Electric blue */
+    color: #1E1E1E;
+    /* Dark text on light button */
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.current-session-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.exercise-list-session {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.exercise-card {
+    background: #282828;
+    /* Slightly lighter dark */
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
+    padding: 1.5rem;
+    border: 2px solid #3A3A3A;
+    /* Dark border */
+    position: relative;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.exercise-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #E0E0E0;
+    /* Light gray text */
+}
+
+.btn-edit {
+    background: #00BFFF;
+    /* Electric blue */
+    color: #1E1E1E;
+    /* Dark text on light button */
+    border: none;
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.exercise-details {
+    color: #BBBBBB;
+    /* Slightly darker text */
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.set-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #3A3A3A;
+    /* Dark tertiary */
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+.set-label {
+    font-weight: 600;
+    color: #00BFFF;
+    /* Electric blue */
+}
+
+.input-reps,
+.input-weight {
+    width: 100px;
+    padding: 0.4rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    background: #1E1E1E;
+    /* Dark background */
+    color: #E0E0E0;
+    /* Light gray text */
+}
+
+/* Style for the complete checkbox and label */
+.set-complete-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.set-complete-checkbox input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #20B2AA;
+    /* Teal for success */
+    cursor: pointer;
+}
+
+.session-actions {
+    margin-top: 2rem;
+    background: #282828;
+    /* Slightly lighter dark */
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
+    padding: 1.5rem;
+    border: 2px solid #3A3A3A;
+    /* Dark border */
+}
+
+.session-notes {
+    width: 100%;
+    min-height: 60px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    padding: 0.7rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    background: #1E1E1E;
+    /* Dark background */
+    color: #E0E0E0;
+    /* Light gray text */
+}
+
+.session-action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-save {
+    background: #20B2AA;
+    /* Teal for success */
+    color: #1E1E1E;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #FF5252;
+    /* Red for danger */
+    color: #E0E0E0;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-delete-exercise,
+.btn-delete-set {
+    background: transparent;
+    color: #FF5252;
+    /* Red for danger */
+    border: 1px solid #FF5252;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.btn-save-edit,
+.btn-cancel-edit {
+    background: transparent;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.btn-save-edit {
+    color: #20B2AA;
+    /* Teal for success */
+    border: 1px solid #20B2AA;
+}
+
+.btn-cancel-edit {
+    color: #BBBBBB;
+    border: 1px solid #BBBBBB;
+}
+
+.btn-add-set,
+.btn-add-exercise {
+    background: transparent;
+    color: #8A2BE2;
+    /* Deep purple secondary */
+    border: 1px solid #8A2BE2;
+    padding: 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-add-set:hover,
+.btn-add-exercise:hover {
+    background: rgba(138, 43, 226, 0.1);
+    /* Deep purple with opacity */
+}
+
+.edit-exercise-name {
+    background: #1E1E1E;
+    color: #E0E0E0;
+    border: 1px solid #00BFFF;
+    /* Electric blue */
+    padding: 0.4rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+/* Parent container - remove hover effects to prevent double arrows */
+.exercise-card.collapsed {
+    background-color: #282828;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
+    padding: 0;
+    /* Remove padding since CollapsedExerciseCard handles its own */
+    border: 2px solid #3A3A3A;
+}
+
+/* Specific styling for the CollapsedExerciseCard component */
+.collapsed-exercise-inner {
+    cursor: pointer;
+    background-color: transparent;
+    padding: 10px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 14px;
+}
+
+.collapsed-exercise-inner:hover {
+    background-color: #323232;
+    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.2);
+    border-left: 3px solid #00BFFF;
+    transform: translateY(-2px);
+}
+
+.collapsed-exercise-inner .exercise-name {
+    transition: color 0.3s ease;
+}
+
+.collapsed-exercise-inner:hover .exercise-name {
+    color: #00BFFF;
+}
+
+.collapsed-exercise-inner:hover::after {
+    content: "▶";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00BFFF;
+    opacity: 0.7;
+}
+
+/* Ensure expanded cards never show the arrow */
+.exercise-card.expanded::after {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .current-session-container {
+        padding: 1rem;
+    }
+
+    .current-session-content {
+        gap: 1rem;
+    }
+
+    .exercise-list-session {
+        gap: 1rem;
+    }
+
+    .exercise-card,
+    .session-actions {
+        padding: 1rem;
+    }
+}
+
+/* Loading and error states */
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #00BFFF;
+    /* Electric blue */
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #FF5252;
+    /* Red */
+}

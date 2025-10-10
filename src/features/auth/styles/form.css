@@ -1,0 +1,52 @@
+/* Login and SignUp form styles */
+.login-signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #2d3a4b;
+    font-weight: 500;
+}
+
+.login-signup-form input[type="email"],
+.login-signup-form input[type="password"] {
+    padding: 0.85rem 1rem;
+    border: 1px solid #e3e8ee;
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: border 0.2s;
+}
+
+.login-signup-form input[type="email"]:focus,
+.login-signup-form input[type="password"]:focus {
+    border-color: #7f9cf5;
+    outline: none;
+    background: #fff;
+}
+
+.login-signup-form button[type="submit"] {
+    padding: 0.85rem 1rem;
+    background: linear-gradient(90deg, #7f9cf5 0%, #5a67d8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 0.7rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.login-signup-form button[type="submit"]:hover {
+    background: linear-gradient(90deg, #5a67d8 0%, #7f9cf5 100%);
+    transform: translateY(-2px) scale(1.02);
+}
