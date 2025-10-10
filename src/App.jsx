@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Auth from "./features/auth/pages/index.jsx";
 import CreateProgram from "./features/programs/pages/CreateProgram.jsx";
 import ExecuteProgram from "./features/programs/pages/ExecuteProgram.jsx";
