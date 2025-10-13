@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./CurrentSession.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
@@ -28,6 +28,48 @@ const SessionHeader = ({ workout, onBack }) => {
     </div>
   );
 };
+
+// Drop down menu component
+
+function DropdownMenu({ actions, trigger }) {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="dropdown" ref={menuRef}>
+      <button className="dropdown-trigger" onClick={() => setOpen((o) => !o)}>
+        {trigger || "⋮"}
+      </button>
+      {open && (
+        <div className="dropdown-content">
+          {actions.map((action, index) => (
+            <button
+              key={index}
+              className="dropdown-item"
+              onClick={(e) => {
+                action.onClick(e);
+                setOpen(false);
+              }}
+            >
+              {action.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Collapsed version of ExerciseCard component
 const CollapsedExerciseCard = ({ exercise, onExpand }) => {
@@ -225,27 +267,27 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                     </div>
                   </>
                 ) : (
-                  // View mode
                   <>
                     <h2 className="exercise-name">{exercise.name}</h2>
-                    <button
-                      className="btn-edit"
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent card click
-                        setEditingExerciseId(exercise.id);
-                      }}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn-delete-exercise"
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent card click
-                        handleDeleteExercise(exercise.id);
-                      }}
-                    >
-                      Delete Exercise
-                    </button>
+                    <DropdownMenu
+                      actions={[
+                        {
+                          label: "Edit",
+                          onClick: (e) => {
+                            e.stopPropagation();
+                            setEditingExerciseId(exercise.id);
+                          },
+                        },
+                        {
+                          label: "Delete",
+                          onClick: (e) => {
+                            e.stopPropagation();
+                            handleDeleteExercise(exercise.id);
+                          },
+                        },
+                      ]}
+                      trigger={<span>⋮</span>}
+                    />
                   </>
                 )}
               </div>
@@ -261,9 +303,6 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                 {Array.from({ length: Number(exercise.sets.length) }).map(
                   (_, setIdx) => (
                     <div className="set-row" key={setIdx}>
-                      <span className="set-label">
-                        Set {setIdx + 1} {/* Will display set number */}
-                      </span>
                       <input
                         type="number"
                         className="input-reps"
@@ -282,21 +321,22 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                           handleWeightChange(index, setIdx, e.target.value)
                         }
                       />
-                      <div className="set-complete-checkbox">
-                        <input
-                          type="checkbox"
-                          checked={exercise.sets[setIdx]?.complete || false}
-                          onChange={() => handleCompleteSet(index, setIdx)}
-                        />
-                      </div>
                       {/* Add delete button when in edit mode */}
-                      {editingExerciseId === exercise.id && (
+                      {editingExerciseId === exercise.id ? (
                         <button
                           className="btn-delete-set"
                           onClick={() => handleDeleteSet(index, setIdx)}
                         >
-                          Delete
+                          X
                         </button>
+                      ) : (
+                        <div className="set-complete-checkbox">
+                          <input
+                            type="checkbox"
+                            checked={exercise.sets[setIdx]?.complete || false}
+                            onChange={() => handleCompleteSet(index, setIdx)}
+                          />
+                        </div>
                       )}
                     </div>
                   )
