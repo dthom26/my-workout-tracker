@@ -257,7 +257,7 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                         className="btn-cancel-edit"
                         onClick={() => setEditingExerciseId(null)}
                       >
-                        Cancel
+                        X
                       </button>
                     </div>
                   </>
@@ -494,17 +494,24 @@ const CurrentSession = () => {
         <DropdownMenu
           actions={[
             {
-              label: "Edit",
+              label: "Home",
               onClick: (e) => {
                 e.stopPropagation();
-                handleBack();
+                navigate(`/ExecuteProgram/${programId}`);
               },
             },
             {
-              label: "Delete",
+              label: "Program Overview",
               onClick: (e) => {
                 e.stopPropagation();
-                handleBack();
+                navigate(`/ExecuteProgram/${programId}`);
+              },
+            },
+            {
+              label: "All Programs",
+              onClick: (e) => {
+                e.stopPropagation();
+                navigate("/ListOfUsersPrograms"); // Adjust the route as needed
               },
             },
           ]}
