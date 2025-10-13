@@ -7,10 +7,11 @@ import { useAuth } from "../../auth/context/AuthContext";
 import { saveSessionToFirestore } from "../utils/sessionService"; // Import the service to save session
 import { getSessionFromFirestore } from "../utils/sessionService"; // Import the service to get session
 // Header component
-const SessionHeader = ({ workout, onBack }) => {
+const SessionHeader = ({ workout }) => {
   return (
     <div className="session-header">
       {/* Program/workout name, week, day */}
+
       <h1 className="session-title">
         {workout.name} {/* Will display workout name from DB */}
       </h1>
@@ -19,12 +20,6 @@ const SessionHeader = ({ workout, onBack }) => {
           Week {workout.week} {/* Will display week number from DB */}
         </span>
       </div>
-      <button
-        className="btn-back"
-        onClick={onBack} // Add navigation logic here
-      >
-        Back
-      </button>
     </div>
   );
 };
@@ -495,6 +490,27 @@ const CurrentSession = () => {
   // Pass workout data to components as props
   return (
     <div className="current-session-container">
+      <nav className="breadcrumb">
+        <DropdownMenu
+          actions={[
+            {
+              label: "Edit",
+              onClick: (e) => {
+                e.stopPropagation();
+                handleBack();
+              },
+            },
+            {
+              label: "Delete",
+              onClick: (e) => {
+                e.stopPropagation();
+                handleBack();
+              },
+            },
+          ]}
+          trigger={<span>⋮</span>}
+        />
+      </nav>
       <SessionHeader workout={workout} onBack={handleBack} />
       <div className="current-session-content">
         <ExerciseList
