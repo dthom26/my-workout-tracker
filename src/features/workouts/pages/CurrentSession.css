@@ -238,6 +238,12 @@
     margin-left: 0.5rem;
 }
 
+.edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
 .btn-save-edit,
 .btn-cancel-edit {
     background: transparent;

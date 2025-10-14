@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserPrograms } from "../hooks/useUserPrograms";
 import "./ListOfUsersPrograms.css";
@@ -7,9 +7,14 @@ const ListOfUsersPrograms = () => {
   const { userPrograms, loading, error } = useUserPrograms();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!loading && userPrograms.length === 0) {
+      navigate("/CreateProgram");
+    }
+  }, [loading, userPrograms, navigate]);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (userPrograms.length === 0) return <div>No programs found.</div>;
 
   return (
     <div className="user-programs-container">
