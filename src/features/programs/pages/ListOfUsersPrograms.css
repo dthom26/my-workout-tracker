@@ -7,6 +7,21 @@
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
     /* Electric blue shadow */
+    position: relative;
+}
+
+.breadcrumb {
+    position: absolute;
+    top: 1.5rem;
+    /* Adjust as needed for vertical alignment */
+    right: 2rem;
+    /* Adjust as needed for horizontal alignment */
+    z-index: 10;
+}
+
+.breadcrumb span {
+    color: white;
+    /* Light gray text */
 }
 
 .user-programs-container h1 {

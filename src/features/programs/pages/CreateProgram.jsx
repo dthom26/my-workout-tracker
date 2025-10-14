@@ -138,7 +138,7 @@ const CreateProgram = () => {
     }
   };
 
-  const steps = ["1. Details", "2. Workouts", "3. Preview"];
+  const steps = ["Details", "Workouts", "Preview"];
 
   return (
     <div className="create-program-container">

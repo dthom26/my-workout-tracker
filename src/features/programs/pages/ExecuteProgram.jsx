@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../backend/config/firbase-config";
 import { useParams } from "react-router-dom";
+import { DropdownMenu } from "../../../shared/components/DropdownBreadCrumb";
 import "./ExecuteProgram.css";
 
 const ExecuteProgram = () => {
@@ -46,14 +47,6 @@ const ExecuteProgram = () => {
     setCurrentWeek(weekNumber);
   };
 
-  const handleBackToPrograms = () => {
-    navigate("/ListOfUsersPrograms"); // Could also be a dedicated programs list page later
-  };
-
-  const handleCreateNewProgram = () => {
-    navigate("/CreateProgram");
-  };
-
   if (loading) {
     return (
       <div className="execute-program-container">
@@ -74,14 +67,35 @@ const ExecuteProgram = () => {
     <div className="execute-program-container">
       {/* Header */}
       <div className="execute-program-header">
-        <div className="header-actions">
-          <button onClick={handleBackToPrograms} className="btn-back">
-            ← Back to Home
-          </button>
-          <button onClick={handleCreateNewProgram} className="btn-secondary">
-            Create New Program
-          </button>
-        </div>
+        <nav className="breadcrumb">
+          <DropdownMenu
+            actions={[
+              {
+                label: "Home",
+                onClick: (e) => {
+                  e.stopPropagation();
+                  navigate("/ListOfUsersPrograms");
+                },
+              },
+              {
+                label: "Create Program",
+                onClick: (e) => {
+                  e.stopPropagation();
+                  navigate("/CreateProgram");
+                },
+              },
+              {
+                label: "Sign Out",
+                onClick: (e) => {
+                  e.stopPropagation();
+                  navigate("/ListOfUsersPrograms");
+                },
+              },
+            ]}
+            trigger={<span>⋮</span>}
+          />
+        </nav>
+
         <h1>{userProgram.name}</h1>
         <div className="program-info">
           <span>

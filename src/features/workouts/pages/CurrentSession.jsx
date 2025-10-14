@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./CurrentSession.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
@@ -6,6 +6,7 @@ import { db } from "../../../../backend/config/firbase-config";
 import { useAuth } from "../../auth/context/AuthContext";
 import { saveSessionToFirestore } from "../utils/sessionService"; // Import the service to save session
 import { getSessionFromFirestore } from "../utils/sessionService"; // Import the service to get session
+import { DropdownMenu } from "../../../shared/components/DropdownBreadCrumb";
 // Header component
 const SessionHeader = ({ workout }) => {
   return (
@@ -23,48 +24,6 @@ const SessionHeader = ({ workout }) => {
     </div>
   );
 };
-
-// Drop down menu component
-
-function DropdownMenu({ actions, trigger }) {
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef();
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  return (
-    <div className="dropdown" ref={menuRef}>
-      <button className="dropdown-trigger" onClick={() => setOpen((o) => !o)}>
-        {trigger || "⋮"}
-      </button>
-      {open && (
-        <div className="dropdown-content">
-          {actions.map((action, index) => (
-            <button
-              key={index}
-              className="dropdown-item"
-              onClick={(e) => {
-                action.onClick(e);
-                setOpen(false);
-              }}
-            >
-              {action.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // Collapsed version of ExerciseCard component
 const CollapsedExerciseCard = ({ exercise, onExpand }) => {
