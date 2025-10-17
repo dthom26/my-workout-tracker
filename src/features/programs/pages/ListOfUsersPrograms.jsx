@@ -55,6 +55,32 @@ const ListOfUsersPrograms = () => {
             className="user-program-card"
             onClick={() => navigate(`/ExecuteProgram/${program.id}`)}
           >
+            <DropdownMenu
+              actions={[
+                {
+                  label: "Home",
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    navigate("/ListOfUsersPrograms");
+                  },
+                },
+                {
+                  label: "Create Program",
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    navigate("/CreateProgram");
+                  },
+                },
+                {
+                  label: "Sign Out",
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    navigate("/ListOfUsersPrograms"); // Adjust the route as needed
+                  },
+                },
+              ]}
+              trigger={<span>⋮</span>}
+            />
             <h2>{program.name}</h2>
             <p>{program.description}</p>
             <span>{program.duration} weeks</span>

@@ -18,7 +18,13 @@ export function DropdownMenu({ actions, trigger }) {
 
   return (
     <div className="dropdown" ref={menuRef}>
-      <button className="dropdown-trigger" onClick={() => setOpen((o) => !o)}>
+      <button
+        className="dropdown-trigger"
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen((o) => !o);
+        }}
+      >
         {trigger || "⋮"}
       </button>
       {open && (

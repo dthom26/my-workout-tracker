@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./CurrentSession.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
@@ -6,7 +6,6 @@ import { db } from "../../../../backend/config/firbase-config";
 import { useAuth } from "../../auth/context/AuthContext";
 import { saveSessionToFirestore } from "../utils/sessionService"; // Import the service to save session
 import { getSessionFromFirestore } from "../utils/sessionService"; // Import the service to get session
-import { DropdownMenu } from "../../../shared/components/DropdownBreadCrumb";
 // Header component
 const SessionHeader = ({ workout }) => {
   return (
@@ -24,6 +23,48 @@ const SessionHeader = ({ workout }) => {
     </div>
   );
 };
+
+// Drop down menu component
+
+function DropdownMenu({ actions, trigger }) {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="dropdown" ref={menuRef}>
+      <button className="dropdown-trigger" onClick={() => setOpen((o) => !o)}>
+        {trigger || "⋮"}
+      </button>
+      {open && (
+        <div className="dropdown-content">
+          {actions.map((action, index) => (
+            <button
+              key={index}
+              className="dropdown-item"
+              onClick={(e) => {
+                action.onClick(e);
+                setOpen(false);
+              }}
+            >
+              {action.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Collapsed version of ExerciseCard component
 const CollapsedExerciseCard = ({ exercise, onExpand }) => {
@@ -112,6 +153,30 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
           if (sIdx !== setIndex) return set;
           return { ...set, weight: newWeightValue };
         });
+        return {
+          ...exercise,
+          sets: updatedSets,
+        };
+      });
+
+      return {
+        ...prevWorkout,
+        exercises: updatedWorkout,
+      };
+    });
+  };
+
+  const handleRirChange = (exerciseIndex, setIndex, newRirValue) => {
+    setWorkout((prevWorkout) => {
+      const updatedWorkout = prevWorkout.exercises.map((exercise, exIdx) => {
+        if (exIdx !== exerciseIndex) return exercise;
+
+        // Update the RIR for the specific set
+        const updatedSets = exercise.sets.map((set, sIdx) => {
+          if (sIdx !== setIndex) return set;
+          return { ...set, rir: newRirValue };
+        });
+
         return {
           ...exercise,
           sets: updatedSets,
@@ -245,18 +310,27 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                   </>
                 )}
               </div>
-              <div className="exercise-details">
-                {/* <span>
+              {/* <div className="exercise-details">
+                <span>
               Target: {exercise.sets.length} sets × {exercise.sets[0].reps} reps
               @ {exercise.sets[0].weight}lbs • Rest: {exercise.sets[0].restTime}
               s 
-            </span> */}
-              </div>
+            </span>
+              </div> */}
               <div className="sets-list">
                 {/* Render set rows based on number of sets */}
                 {Array.from({ length: Number(exercise.sets.length) }).map(
                   (_, setIdx) => (
                     <div className="set-row" key={setIdx}>
+                      <input
+                        type="number"
+                        className="input-weight"
+                        placeholder="Weight" // Will display/set actual weight
+                        value={exercise.sets[setIdx]?.weight || ""} // Assuming exercise.sets is an array of set objects
+                        onChange={(e) =>
+                          handleWeightChange(index, setIdx, e.target.value)
+                        }
+                      />
                       <input
                         type="number"
                         className="input-reps"
@@ -267,13 +341,13 @@ const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
                         } // Add reps change logic here
                       />
                       <input
-                        type="text"
-                        className="input-weight"
-                        placeholder="Weight" // Will display/set actual weight
-                        value={exercise.sets[setIdx]?.weight || ""} // Assuming exercise.sets is an array of set objects
+                        type="number"
+                        className="input-rir"
+                        placeholder="RIR" // Will display/set actual RIR
+                        value={exercise.sets[setIdx]?.rir || ""} // Assuming exercise.sets is an array of set objects
                         onChange={(e) =>
-                          handleWeightChange(index, setIdx, e.target.value)
-                        }
+                          handleRirChange(index, setIdx, e.target.value)
+                        } // Add RIR change logic here
                       />
                       {/* Add delete button when in edit mode */}
                       {editingExerciseId === exercise.id ? (

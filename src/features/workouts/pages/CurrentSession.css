@@ -87,6 +87,8 @@
     position: relative;
 }
 
+
+
 .exercise-header {
     display: flex;
     justify-content: space-between;
@@ -143,7 +145,8 @@
 }
 
 .input-reps,
-.input-weight {
+.input-weight,
+.input-rir {
     width: 100px;
     padding: 0.4rem;
     border: 1px solid #444;
@@ -153,6 +156,26 @@
     /* Dark background */
     color: #E0E0E0;
     /* Light gray text */
+}
+
+@media (max-width: 400px) {
+
+    .input-reps,
+    .input-weight,
+    .input-rir {
+        width: 70px;
+    }
+
+}
+
+.input-reps::-webkit-outer-spin-button,
+.input-reps::-webkit-inner-spin-button,
+.input-weight::-webkit-outer-spin-button,
+.input-weight::-webkit-inner-spin-button,
+.input-rir::-webkit-outer-spin-button,
+.input-rir::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Style for the complete checkbox and label */
@@ -343,6 +366,11 @@
 /* Ensure expanded cards never show the arrow */
 .exercise-card.expanded::after {
     display: none;
+}
+
+.exercise-card.expanded .btn-add-set {
+    margin-top: 1.2rem;
+    /* Adjust as needed for desired gap */
 }
 
 @media (max-width: 768px) {
