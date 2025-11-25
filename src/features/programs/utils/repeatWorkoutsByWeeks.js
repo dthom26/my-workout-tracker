@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 export function repeatWorkoutsByWeeks(originalWorkouts, duration) {
   const weeks =
     Number.isInteger(duration) && duration > 0
@@ -11,7 +12,8 @@ export function repeatWorkoutsByWeeks(originalWorkouts, duration) {
       repeatedWorkouts.push({
         ...workout,
         week,
-        id: `${workout.id || ""}-week${week}`, // ensures unique id per week
+        id: uuidv4(),
+        templateId: workout.templateId, // Keep same templateId to link them
       });
     }
   }

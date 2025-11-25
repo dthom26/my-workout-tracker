@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { auth } from "../../../../backend/config/firbase-config";
+import { repositoryFactory } from "../../../data/factory/repositoryFactory";
 
 const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
+  const [templates, setTemplates] = useState([]);
+
+  // Fetch exercise templates for autocomplete
+  useEffect(() => {
+    const fetchTemplates = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          const userTemplates =
+            await repositoryFactory.exerciseTemplateRepository.getExerciseTemplates(
+              user.uid
+            );
+          setTemplates(userTemplates || []);
+        } catch (error) {
+          console.error("Error fetching templates:", error);
+        }
+      }
+    };
+
+    fetchTemplates();
+  }, []);
+
   return (
     <div className="exercise-section">
       <h3>Add Exercise</h3>
@@ -15,7 +39,13 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
             }))
           }
           placeholder="Exercise name"
+          list="exercise-templates"
         />
+        <datalist id="exercise-templates">
+          {templates.map((template) => (
+            <option key={template.id} value={template.name} />
+          ))}
+        </datalist>
         <input
           type="number"
           value={exercise.sets}

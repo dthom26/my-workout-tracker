@@ -45,7 +45,7 @@
     box-shadow: 0 6px 24px rgba(0, 191, 255, 0.2);
     background: #323232;
     /* Slightly lighter on hover */
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); */
     /* Slight lift effect */
 }
 
@@ -84,5 +84,5 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
-    z-index: 2;
+
 }

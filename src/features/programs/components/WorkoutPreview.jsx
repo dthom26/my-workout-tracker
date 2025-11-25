@@ -9,19 +9,19 @@ const WorkoutPreview = ({ workout, onRemoveWorkout }) => {
           onClick={() => onRemoveWorkout(workout.id)}
           className="btn-remove"
         >
-          Remove
+          x
         </button>
       </div>
       <div className="exercises-preview">
         {workout.exercises.map((exercise) => (
           <div key={exercise.id} className="exercise-preview">
-            <span className="exercise-name">{exercise.name}</span>{" "}
-            <span className="exercise-details">
+            <div className="exercise-name">{exercise.name}</div>
+            <div className="exercise-details">
               {exercise.sets.length} sets × {exercise.sets[0].reps} reps
-              {exercise.sets[0].weight && ` @ ${exercise.sets[0].weight}`}
+              {/* {exercise.sets[0].weight && ` @ ${exercise.sets[0].weight}`}
               {exercise.sets[0].restTime &&
-                ` • Rest: ${exercise.sets[0].restTime}`}
-            </span>
+                ` • Rest: ${exercise.sets[0].restTime}`} */}
+            </div>
           </div>
         ))}
       </div>

@@ -1,8 +1,14 @@
-import { db } from "../../../../backend/config/firbase-config";
-import { collection, addDoc } from "firebase/firestore";
+// src/features/programs/utils/programService.js
+import { repositoryFactory } from "../../../data/factory/repositoryFactory";
+
+const programRepository = repositoryFactory.programRepository;
 
 export const saveProgramToFirestore = async (programData) => {
-  // Use addDoc for auto-generated ID
-  const docRef = await addDoc(collection(db, "programs"), programData);
-  return docRef.id;
+  return await programRepository.createProgram(programData);
 };
+
+export const deleteProgramFromFirestore = async (programId) => {
+  return await programRepository.deleteProgram(programId);
+};
+
+// Add other methods as needed

@@ -7,7 +7,7 @@ export function useGoogleSignIn() {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
-      navigate("/ListOfUsersPrograms"); // or your desired route
+      navigate("/dashboard"); // Navigate to dashboard after sign in
     } catch (error) {
       // handle error (show message, etc.)
       console.error("Sign in failed:", error);

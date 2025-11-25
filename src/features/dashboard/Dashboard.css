@@ -1,0 +1,220 @@
+.dashboard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    background: #1E1E1E;
+    /* Dark charcoal background */
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
+    /* Electric blue shadow */
+    color: #E0E0E0;
+}
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #3A3A3A;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #00BFFF;
+    margin: 0;
+}
+
+.btn-sign-out {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-sign-out:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.welcome-section h2 {
+    font-size: 2rem;
+    color: #E0E0E0;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+    font-size: 1.1rem;
+    color: #BBBBBB;
+    margin: 0;
+}
+
+/* Navigation Cards */
+.nav-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.nav-card {
+    background: #282828;
+    border: 2px solid #3A3A3A;
+    border-radius: 14px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 191, 255, 0.25);
+    border-color: #00BFFF;
+}
+
+.create-program-card:hover {
+    box-shadow: 0 8px 32px rgba(32, 178, 170, 0.25);
+    border-color: #20B2AA;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.nav-card h3 {
+    font-size: 1.5rem;
+    color: #00BFFF;
+    margin-bottom: 1rem;
+}
+
+.create-program-card h3 {
+    color: #20B2AA;
+}
+
+.nav-card p {
+    color: #BBBBBB;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.card-action {
+    color: #00BFFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.create-program-card .card-action {
+    color: #20B2AA;
+}
+
+/* Quick Stats */
+.quick-stats {
+    background: #282828;
+    border: 2px solid #3A3A3A;
+    border-radius: 14px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.quick-stats h3 {
+    color: #00BFFF;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid #3A3A3A;
+}
+
+.stat-label {
+    display: block;
+    color: #BBBBBB;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    display: block;
+    color: #00BFFF;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.stats-note {
+    text-align: center;
+    color: #BBBBBB;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Footer */
+.dashboard-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #3A3A3A;
+}
+
+.dashboard-footer p {
+    color: #BBBBBB;
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .nav-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .nav-card {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

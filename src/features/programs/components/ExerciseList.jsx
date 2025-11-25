@@ -11,15 +11,14 @@ const ExerciseList = ({ exercises, onRemoveExercise }) => {
           <span>
             {exercise.name} - {exercise.sets.length} sets x{" "}
             {exercise.sets[0].reps} reps{" "}
-            {exercise.sets[0].weight && ` @ ${exercise.sets[0].weight}`}
-            {exercise.sets[0].restTime &&
-              ` • Rest: ${exercise.sets[0].restTime}`}
           </span>
           <button
             onClick={() => onRemoveExercise(exercise.id)}
             className="btn-remove"
+            aria-label={`Remove ${exercise.name}`}
+            title={`Remove ${exercise.name}`}
           >
-            Remove
+            X
           </button>
         </div>
       ))}

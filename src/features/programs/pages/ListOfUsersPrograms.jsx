@@ -2,11 +2,24 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserPrograms } from "../hooks/useUserPrograms";
 import { DropdownMenu } from "../../../shared/components/DropdownBreadCrumb";
+import { deleteProgramFromFirestore } from "../utils/programService";
+import { useAuth } from "../../auth/context/AuthContext";
 import "./ListOfUsersPrograms.css";
 
 const ListOfUsersPrograms = () => {
-  const { userPrograms, loading, error } = useUserPrograms();
+  const { userPrograms, loading, error, refetchPrograms } = useUserPrograms();
   const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to sign out:", error);
+      alert("Failed to sign out. Please try again.");
+    }
+  };
 
   useEffect(() => {
     if (!loading && userPrograms.length === 0) {
@@ -26,7 +39,7 @@ const ListOfUsersPrograms = () => {
               label: "Home",
               onClick: (e) => {
                 e.stopPropagation();
-                navigate("/ListOfUsersPrograms");
+                navigate("/dashboard");
               },
             },
             {
@@ -40,7 +53,7 @@ const ListOfUsersPrograms = () => {
               label: "Sign Out",
               onClick: (e) => {
                 e.stopPropagation();
-                navigate("/ListOfUsersPrograms"); // Adjust the route as needed
+                handleSignOut();
               },
             },
           ]}
@@ -58,24 +71,16 @@ const ListOfUsersPrograms = () => {
             <DropdownMenu
               actions={[
                 {
-                  label: "Home",
-                  onClick: (e) => {
+                  label: "Delete Program",
+                  onClick: async (e) => {
                     e.stopPropagation();
-                    navigate("/ListOfUsersPrograms");
-                  },
-                },
-                {
-                  label: "Create Program",
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    navigate("/CreateProgram");
-                  },
-                },
-                {
-                  label: "Sign Out",
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    navigate("/ListOfUsersPrograms"); // Adjust the route as needed
+                    try {
+                      await deleteProgramFromFirestore(program.id);
+                      // refetch to update UI
+                      if (refetchPrograms) await refetchPrograms();
+                    } catch (err) {
+                      console.error("Failed to delete program:", err);
+                    }
                   },
                 },
               ]}

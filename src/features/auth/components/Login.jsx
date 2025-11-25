@@ -12,10 +12,8 @@ const Login = ({ className }) => {
     e.preventDefault();
     try {
       await loginWithEmailAndPassword(email, password);
-      navigate("/ListOfUsersPrograms"); // Redirect after successful login
+      navigate("/dashboard"); // Redirect after successful login
     } catch (error) {
-      // handle error (show message, etc.)
-      console.error("Login failed:", error);
       alert("Login failed: " + error.message);
     }
   };
@@ -25,6 +23,7 @@ const Login = ({ className }) => {
       <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input
+          className="form-input"
           type="email"
           id="email"
           value={email}
@@ -35,6 +34,7 @@ const Login = ({ className }) => {
       <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
+          className="form-input"
           type="password"
           id="password"
           required

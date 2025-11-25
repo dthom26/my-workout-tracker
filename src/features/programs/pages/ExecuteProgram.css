@@ -115,6 +115,16 @@
     padding: 2.5rem;
     box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
     /* Electric blue shadow */
+    position: relative;
+}
+
+.add-workout-menu {
+    position: absolute;
+    top: 1.5rem;
+    /* Adjust as needed for vertical alignment */
+    right: 2rem;
+    /* Adjust as needed for horizontal alignment */
+    z-index: 10;
 }
 
 .week-content h2 {
@@ -142,6 +152,13 @@
     background: #282828;
     /* Slightly lighter dark */
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.workout-card-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 .workout-card:hover {

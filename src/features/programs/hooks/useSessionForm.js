@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export function useSessionForm() {
   const [sessionName, setSessionName] = useState("");
@@ -13,7 +14,14 @@ export function useSessionForm() {
   };
   const handleAddExercise = () => {
     setExercises((prevExercises) => {
-      const newExercises = [...prevExercises, { name: exerciseName }];
+      const newExercises = [
+        ...prevExercises,
+        {
+          id: uuidv4(),
+          templateId: uuidv4(),
+          name: exerciseName,
+        },
+      ];
       console.log(newExercises); // This logs the updated list immediately
       return newExercises;
     });

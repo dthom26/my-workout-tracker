@@ -11,6 +11,11 @@
     gap: 0.5rem;
 }
 
+.form-input {
+    background-color: white !important;
+    color: black !important;
+}
+
 .form-group label {
     font-size: 1rem;
     color: #2d3a4b;
