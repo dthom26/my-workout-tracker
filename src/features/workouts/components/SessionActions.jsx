@@ -1,15 +1,16 @@
-const SessionActions = ({ setWorkout, handleSaveSession }) => {
+import SessionNotesModal from "./SessionNotesModal";
+const SessionActions = ({ workout, setWorkout, handleSaveSession }) => {
   //   const { workoutId, programId, week } = useParams();
   //   const { user } = useAuth();
   //   const navigate = useNavigate();
   //   const [showCopyOptions, setShowCopyOptions] = useState(false);
 
-  const handleNotesChange = (e) => {
-    setWorkout((prev) => ({
-      ...prev,
-      notes: e.target.value,
-    }));
-  };
+  // const handleNotesChange = (e) => {
+  //   setWorkout((prev) => ({
+  //     ...prev,
+  //     notes: e.target.value,
+  //   }));
+  // };
 
   // Handle copy to next week action
   //   const handleCopyToNextWeek = async () => {
@@ -64,13 +65,17 @@ const SessionActions = ({ setWorkout, handleSaveSession }) => {
   //     });
   //   };
 
+  // Handler to save notes from modal
+  const handleSaveNotes = (newNotes) => {
+    setWorkout((prev) => ({
+      ...prev,
+      notes: newNotes,
+    }));
+  };
+
   return (
     <div className="session-actions">
-      <textarea
-        className="session-notes"
-        placeholder="Add notes for this session..." // Will display/set session notes
-        onChange={handleNotesChange} // Add notes change logic here
-      />
+      <SessionNotesModal notes={workout.notes} onSave={handleSaveNotes} />
       <div className="session-action-buttons">
         <button className="btn-save" onClick={handleSaveSession}>
           Save Session

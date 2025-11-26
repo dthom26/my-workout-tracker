@@ -233,6 +233,7 @@ const CurrentSession = () => {
         <SessionActions
           handleSaveSession={handleSaveSession}
           setWorkout={setWorkout}
+          workout={workout}
         />
       </div>
     </div>
