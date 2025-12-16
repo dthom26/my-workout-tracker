@@ -1,0 +1,56 @@
+/**
+ * DARK THEME
+ * ==========
+ * This is your current theme - dark backgrounds with light text.
+ * We override the semantic color variables here.
+ * 
+ * HOW IT WORKS:
+ * The [data-theme="dark"] selector applies these variables when
+ * the HTML element has data-theme="dark" attribute.
+ */
+
+[data-theme="dark"] {
+    /* Background Colors */
+    --color-bg-primary: #1E1E1E;
+    --color-bg-secondary: #282828;
+    --color-bg-tertiary: #323232;
+    --color-bg-elevated: #282828;
+
+    /* Text Colors */
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #BBBBBB;
+    --color-text-inverse: #1E1E1E;
+    --color-text-accent: #00BFFF;
+
+    /* Border Colors */
+    --color-border-default: #3A3A3A;
+    --color-border-focus: #00BFFF;
+    --color-border-success: #20B2AA;
+
+    /* Interactive Elements - stay the same for brand consistency */
+    --color-primary: #00BFFF;
+    --color-primary-hover: #0099CC;
+    --color-secondary: #8a2be2;
+    --color-secondary-hover: #7526c2;
+    --color-success: #20b2aa;
+    --color-success-hover: #1BA098;
+    --color-error: #dc3545;
+    --color-error-hover: #c82333;
+
+    /* Shadows - adjusted for dark theme */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 10px rgba(0, 191, 255, 0.1);
+    --shadow-lg: 0 4px 24px rgba(0, 191, 255, 0.15);
+    --shadow-xl: 0 8px 32px rgba(0, 191, 255, 0.25);
+}
+
+/* Set dark as the default theme */
+html {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}

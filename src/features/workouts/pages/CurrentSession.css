@@ -1,111 +1,101 @@
+/* CurrentSession - Now using CSS Variables for theme support! */
+
 .current-session-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--space-xl);
     min-height: 100vh;
-    background: #1E1E1E;
-    /* Dark charcoal background */
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
-    /* Electric blue shadow */
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
     position: relative;
 }
 
 .breadcrumb {
     position: absolute;
-    top: 1.5rem;
-    /* Adjust as needed for vertical alignment */
-    right: 2rem;
-    /* Adjust as needed for horizontal alignment */
-    z-index: 10;
+    top: var(--space-lg);
+    right: var(--space-xl);
+    z-index: var(--z-dropdown);
 }
 
 .breadcrumb span {
-    color: white;
-    /* Light gray text */
+    color: var(--color-text-primary);
 }
 
 .session-header {
     text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #3A3A3A;
-    /* Darker border */
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: var(--border-width-default) solid var(--color-border-default);
 }
 
 .session-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #00BFFF;
-    /* Electric blue */
-    margin-bottom: 0.5rem;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
 }
 
 .session-meta {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    font-size: 1.1rem;
-    color: #00BFFF;
-    /* Electric blue */
-    margin-bottom: 1rem;
+    gap: var(--space-lg);
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
 }
 
 .btn-back {
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on light button */
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 0.5rem 1.2rem;
-    border-radius: 6px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: 600;
-    margin-top: 1rem;
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--space-md);
 }
 
 .current-session-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-xl);
 }
 
 .exercise-list-session {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-md);
 }
 
 .exercise-card {
-    background: #282828;
-    /* Slightly lighter dark */
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
-    padding: 1.5rem;
-    border: 2px solid #3A3A3A;
-    /* Dark border */
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-md);
+    border: var(--border-width-default) solid var(--color-border-default);
     position: relative;
 }
 
 
-/* styles for the drag-and-drop functionality */
+/* Drag-and-drop functionality */
 .exercise-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .exercise-card.dragging {
     opacity: 0.7;
     transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 100;
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-modal);
 }
 
 .exercise-card.drag-over {
-    border-top: 2px dashed #3498db;
+    border-top: var(--border-width-default) dashed var(--color-primary);
 }
 
 .exercise-list-session {
-    transition: height 0.3s ease;
+    transition: height var(--transition-base);
 }
 
 @keyframes dropAnimation {
@@ -126,57 +116,53 @@
     animation: dropAnimation 0.3s ease;
 }
 
-/* Styles for drag handle */
+/* Drag handle */
 .drag-handle {
     cursor: grab;
-    padding: 0 8px;
-    font-size: 20px;
-    color: #00BFFF;
+    padding: 0 var(--space-xs);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-right: var(--space-sm);
     touch-action: none;
-    /* Prevents touch scrolling while dragging */
 }
 
 .dragging .drag-handle {
     cursor: grabbing;
 }
 
-/* Enhance the drag-over effect */
+/* Enhanced drag-over effect */
 .exercise-card.drag-over {
-    border-top: 2px dashed #00BFFF;
+    border-top: var(--border-width-default) dashed var(--color-primary);
     transform: translateY(2px);
 }
 
-/* Improve the transition for smoother animations */
+/* Smooth transitions */
 .exercise-card {
-    transition: transform 0.2s ease,
-        box-shadow 0.2s ease,
-        opacity 0.2s ease,
-        border-color 0.2s ease;
+    transition: transform var(--transition-base),
+        box-shadow var(--transition-base),
+        opacity var(--transition-base),
+        border-color var(--transition-base);
 }
 
 
 .exercise-header {
     display: flex;
     align-items: center;
-    /* Changed from space-between to allow natural spacing */
-    margin-bottom: 1rem;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
     width: 100%;
-    /* Ensure it takes full width */
 }
 
-/* Add this for the name container to keep name next to handle */
+/* Name container to keep name next to handle */
 .name-container {
     display: flex;
     align-items: center;
     flex-grow: 1;
     min-width: 0;
-    /* Allow container to shrink below content size */
-    margin-right: 10px;
-    /* Add margin to the right of the name container */
+    margin-right: var(--space-sm);
 }
 
 /* Special styles for edit mode without drag handle */
@@ -186,66 +172,58 @@
 }
 
 .exercise-name {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #E0E0E0;
-    /* Light gray text */
-    margin-right: 10px;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-right: var(--space-sm);
+    margin-bottom: 0;
 }
 
 .edit-exercise-name {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-right: 10px;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--space-sm);
     width: 100%;
-    /* Use width instead of flex-grow to prevent excessive expansion */
     max-width: 350px;
-    /* Slightly increased max width since we have more space */
-    /* Limit maximum width */
 }
 
 .btn-edit {
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on light button */
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 0.3rem 1rem;
-    border-radius: 8px;
+    padding: var(--space-2xs) var(--space-md);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
 
 .exercise-details {
-    color: #BBBBBB;
-    /* Slightly darker text */
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-sm);
 }
 
 .sets-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-sm);
 }
 
 .set-row {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    background: #3A3A3A;
-    /* Dark tertiary */
-    border-radius: 8px;
-    padding: 0.5rem 0.75rem;
+    gap: var(--space-lg);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-lg);
     flex-wrap: nowrap;
     overflow: hidden;
     box-sizing: border-box;
 }
 
 .set-label {
-    font-weight: 600;
-    color: #00BFFF;
-    /* Electric blue */
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
     flex-shrink: 0;
     min-width: fit-content;
 }
@@ -254,64 +232,71 @@
 .input-weight,
 .input-rir {
     width: 100px;
-    padding: 0.4rem;
-    border: 1px solid #444;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    background: #1E1E1E;
-    /* Dark background */
-    color: #E0E0E0;
-    /* Light gray text */
-    flex-shrink: 1;
-    min-width: 45px;
+    padding: var(--space-xs) var(--space-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+    min-width: 50px;
     box-sizing: border-box;
+    text-align: center;
 }
 
-@media (max-width: 400px) {
+.input-reps::placeholder,
+.input-weight::placeholder,
+.input-rir::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+@media (max-width: 460px) {
     .set-row {
-        gap: 0.25rem;
-        padding: 0.4rem 0.6rem;
-        font-size: 0.95rem;
+        padding: .4rem .6rem;
+        gap: .25rem;
+        font-size: var(--font-size-sm);
     }
 
     .input-reps,
     .input-weight,
     .input-rir {
-        width: 60px;
+        width: 28%;
         min-width: 50px;
-        font-size: 1rem;
-        padding: 0.3rem;
+        font-size: var(--font-size-base);
+        padding: .3rem;
     }
 
     .btn-delete-set {
-        font-size: 0.85rem;
-        padding: 0.25rem 0.6rem;
+        font-size: var(--font-size-sm);
+        padding: var(--space-3xs) var(--space-xs);
     }
 }
 
 @media (max-width: 360px) {
     .set-row {
-        gap: 0.15rem;
-        padding: 0.4rem 0.5rem;
-        font-size: 0.9rem;
+        padding: .4rem .6rem;
+        gap: .25rem;
+        font-size: var(--font-size-sm);
     }
 
     .set-label {
-        font-size: 0.85rem;
+        font-size: var(--font-size-sm);
         min-width: 35px;
     }
 
     .input-reps,
     .input-weight,
     .input-rir {
-        width: 45px;
+        padding: .3rem;
+        width: 28%;
         min-width: 45px;
-        font-size: 0.9rem;
-        padding: 0.3rem;
+        font-size: var(--font-size-sm);
+
     }
 
     .btn-delete-set {
-        font-size: 0.8rem;
+        font-size: var(--font-size-xs);
         padding: 0.2rem 0.4rem;
     }
 
@@ -331,11 +316,11 @@
     margin: 0;
 }
 
-/* Style for the complete checkbox and label */
+/* Complete checkbox */
 .set-complete-checkbox {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     flex-shrink: 0;
     margin-left: auto;
 }
@@ -343,81 +328,79 @@
 .set-complete-checkbox input[type="checkbox"] {
     width: 22px;
     height: 22px;
-    accent-color: #20B2AA;
-    /* Teal for success */
+    accent-color: var(--color-success);
     cursor: pointer;
 }
 
 .session-actions {
-    margin-top: 2rem;
-    background: #282828;
-    /* Slightly lighter dark */
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
-    padding: 1.5rem;
-    border: 2px solid #3A3A3A;
-    /* Dark border */
+    margin-top: var(--space-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    border: var(--border-width-default) solid var(--color-border-default);
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-md);
 }
 
 .session-notes {
     width: 100%;
     min-height: 60px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    padding: 0.7rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    background: #1E1E1E;
-    /* Dark background */
-    color: #E0E0E0;
-    /* Light gray text */
+    border-radius: var(--radius-md);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    padding: var(--space-sm);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-md);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
 }
 
 .session-action-buttons {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-md);
     align-items: center;
 }
 
 .btn-save {
-    background: #20B2AA;
-    /* Teal for success */
-    color: #1E1E1E;
+    background: var(--color-success);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 0.7rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
     cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.btn-save-success {
+    background: var(--color-success-hover);
+    transform: scale(1.05);
 }
 
 .btn-cancel {
-    background: #FF5252;
-    /* Red for danger */
-    color: #E0E0E0;
+    background: var(--color-error);
+    color: var(--color-text-primary);
     border: none;
-    padding: 0.7rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
     cursor: pointer;
 }
 
 .btn-delete-exercise,
 .btn-delete-set {
     background: transparent;
-    color: #FF5252;
-    /* Red for danger */
-    border: 1px solid #FF5252;
-    padding: 0.3rem 0.8rem;
-    border-radius: 6px;
+    color: var(--color-error);
+    border: var(--border-width-thin) solid var(--color-error);
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
+    font-size: var(--font-size-sm);
+    margin-left: var(--space-xs);
     flex-shrink: 0;
     white-space: nowrap;
 }
@@ -425,106 +408,104 @@
 .edit-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     margin-left: auto;
-    /* Push to the right */
     min-width: fit-content;
-    /* Prevent shrinking */
 }
 
 .btn-save-edit,
 .btn-cancel-edit {
     background: transparent;
-    padding: 0.3rem 0.8rem;
-    border-radius: 6px;
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
+    font-size: var(--font-size-sm);
+    margin-left: var(--space-xs);
 }
 
 .btn-save-edit {
-    color: #20B2AA;
-    /* Teal for success */
-    border: 1px solid #20B2AA;
+    color: var(--color-success);
+    border: var(--border-width-thin) solid var(--color-success);
 }
 
 .btn-cancel-edit {
-    color: #BBBBBB;
-    border: 1px solid #BBBBBB;
+    color: var(--color-text-secondary);
+    border: var(--border-width-thin) solid var(--color-text-secondary);
 }
 
 .btn-add-set,
 .btn-add-exercise {
     background: transparent;
-    color: #8A2BE2;
-    /* Deep purple secondary */
-    border: 1px solid #8A2BE2;
-    padding: 0.7rem;
-    border-radius: 8px;
+    color: var(--color-secondary);
+    border: var(--border-width-thin) solid var(--color-secondary);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
+    font-weight: var(--font-weight-semibold);
+    transition: background-color var(--transition-fast);
 }
 
 .btn-add-set:hover,
 .btn-add-exercise:hover {
-    background: rgba(138, 43, 226, 0.1);
-    /* Deep purple with opacity */
+    background: rgba(138, 43, 226, 0.15);
+}
+
+.btn-add-set:active,
+.btn-add-exercise:active {
+    background: rgba(138, 43, 226, 0.25);
 }
 
 .edit-exercise-name {
-    background: #1E1E1E;
-    color: #E0E0E0;
-    border: 1px solid #00BFFF;
-    /* Electric blue */
-    padding: 0.4rem;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border: var(--border-width-thin) solid var(--color-primary);
+    padding: var(--space-2xs);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-lg);
 }
 
-/* Parent container - remove hover effects to prevent double arrows */
+/* Collapsed exercise card */
 .exercise-card.collapsed {
-    background-color: #282828;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
     padding: 0;
-    /* Remove padding since CollapsedExerciseCard handles its own */
-    border: 2px solid #3A3A3A;
+    border: var(--border-width-default) solid var(--color-border-default);
 }
 
-/* Specific styling for the CollapsedExerciseCard component */
+/* Collapsed card inner styling */
 .collapsed-exercise-inner {
     cursor: pointer;
     background-color: transparent;
-    padding: 10px;
+    padding: var(--space-sm);
     border-left: 3px solid transparent;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     position: relative;
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
 }
 
 .collapsed-exercise-inner:hover {
-    background-color: #323232;
-    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.2);
-    border-left: 3px solid #00BFFF;
+    background-color: var(--color-bg-tertiary);
+    box-shadow: var(--shadow-lg);
+    border-left: 3px solid var(--color-primary);
     transform: translateY(-2px);
 }
 
 .collapsed-exercise-inner .exercise-name {
-    transition: color 0.3s ease;
+    transition: color var(--transition-base);
 }
 
 .collapsed-exercise-inner:hover .exercise-name {
-    color: #00BFFF;
+    color: var(--color-primary);
 }
 
 .collapsed-exercise-inner:hover::after {
     content: "▶";
     position: absolute;
-    right: 20px;
+    right: var(--space-lg);
     top: 50%;
     transform: translateY(-50%);
-    color: #00BFFF;
+    color: var(--color-primary);
     opacity: 0.7;
 }
 
@@ -534,47 +515,44 @@
 }
 
 .exercise-card.expanded .btn-add-set {
-    margin-top: 1.2rem;
-    /* Adjust as needed for desired gap */
+    margin-top: var(--space-md);
 }
 
 @media (max-width: 768px) {
     .current-session-container {
-        padding: 1rem;
+        padding: var(--space-md);
     }
 
     .current-session-content {
-        gap: 1rem;
+        gap: var(--space-md);
     }
 
     .exercise-list-session {
-        gap: 1rem;
+        gap: var(--space-md);
     }
 
     .exercise-card,
     .session-actions {
-        padding: 1rem;
+        padding: var(--space-md);
     }
 }
 
 /* Loading and error states */
 .loading {
     text-align: center;
-    padding: 40px;
-    font-size: 18px;
-    color: #00BFFF;
-    /* Electric blue */
+    padding: var(--space-3xl);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
 }
 
 .error {
     text-align: center;
-    padding: 40px;
-    font-size: 18px;
-    color: #FF5252;
-    /* Red */
+    padding: var(--space-3xl);
+    font-size: var(--font-size-xl);
+    color: var(--color-error);
 }
 
-/* dropdown menu css */
+/* Dropdown menu */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -583,67 +561,67 @@
 .dropdown-trigger {
     background: none;
     border: none;
-    color: #00bfff;
-    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-size: var(--font-size-2xl);
     cursor: pointer;
-    padding: 0 0.5rem;
+    padding: 0 var(--space-xs);
 }
 
 .dropdown-content {
     position: absolute;
     right: 0;
     top: 2.2rem;
-    background: #282828;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.15);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
     min-width: 120px;
-    z-index: 100;
-    padding: 0.5rem 0;
+    z-index: var(--z-modal);
+    padding: var(--space-xs) 0;
 }
 
 .dropdown-item {
     width: 100%;
     background: none;
     border: none;
-    color: #e0e0e0;
-    padding: 0.5rem 1rem;
+    color: var(--color-text-primary);
+    padding: var(--space-xs) var(--space-md);
     text-align: left;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s;
+    font-size: var(--font-size-base);
+    transition: background var(--transition-fast);
 }
 
 .dropdown-item:hover {
-    background: #323232;
-    color: #00bfff;
+    background: var(--color-bg-tertiary);
+    color: var(--color-primary);
 }
 
 /* Copy options styling */
 .btn-copy {
-    background-color: #2a6a8c;
-    color: white;
+    background-color: var(--color-info);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    margin-left: 8px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    margin-left: var(--space-xs);
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     display: flex;
     align-items: center;
-    transition: background-color 0.3s;
+    transition: background-color var(--transition-base);
 }
 
 .btn-copy:hover {
-    background-color: #3787b3;
+    background-color: var(--color-info-hover);
 }
 
 .copy-options {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #242424;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.3s;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    animation: fadeIn var(--transition-base);
 }
 
 @keyframes fadeIn {
@@ -660,27 +638,27 @@
 
 .btn-copy-next-week {
     width: 100%;
-    background-color: #005b80;
-    color: white;
+    background-color: var(--color-info);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-    margin-bottom: 5px;
+    font-size: var(--font-size-sm);
+    transition: background-color var(--transition-base);
+    margin-bottom: var(--space-2xs);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .btn-copy-next-week:hover {
-    background-color: #0077a3;
+    background-color: var(--color-info-hover);
 }
 
 .session-action-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
 }

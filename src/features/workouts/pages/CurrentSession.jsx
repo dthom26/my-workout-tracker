@@ -28,6 +28,8 @@ const CurrentSession = () => {
   const [previousSessionLoading, setPreviousSessionLoading] = useState(true);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [saveError, setSaveError] = useState(null);
 
   const handleSignOut = async () => {
     try {
@@ -66,7 +68,7 @@ const CurrentSession = () => {
     }));
   };
 
-  const handleSaveSession = () => {
+  const handleSaveSession = async () => {
     console.log("Save session clicked");
     console.log("Current workout state:", workout);
     const sessionData = {
@@ -82,7 +84,13 @@ const CurrentSession = () => {
     };
     console.log("Session data to save:", sessionData);
     // Call your service to save sessionData to Firestore
-    saveSessionToFirestore(sessionData);
+    try {
+      await saveSessionToFirestore(sessionData);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000); // Hide after 3s
+    } catch (error) {
+      setSaveError("Failed to save session. Please try again.", error);
+    }
   };
 
   useEffect(() => {
@@ -234,7 +242,9 @@ const CurrentSession = () => {
           handleSaveSession={handleSaveSession}
           setWorkout={setWorkout}
           workout={workout}
+          saveSuccess={saveSuccess}
         />
+        {saveError && alert(saveError)}
       </div>
     </div>
   );

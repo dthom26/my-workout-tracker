@@ -35,6 +35,10 @@ const CreateProgram = () => {
     restTime: "",
   });
 
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [lastAddedWorkout, setLastAddedWorkout] = useState("");
+  const [editingWorkoutId, setEditingWorkoutId] = useState(null);
+
   const addExercise = async () => {
     if (currentExercise.name && currentExercise.sets && currentExercise.reps) {
       const numberOfSets = parseInt(currentExercise.sets) || 1;
@@ -90,15 +94,61 @@ const CreateProgram = () => {
     }
   };
 
+  const editWorkout = (workoutId) => {
+    setEditingWorkoutId(workoutId);
+  };
+  const cancelEdit = () => {
+    setEditingWorkoutId(null);
+  };
+  const updateWorkout = (workoutId, updatedWorkout) => {
+    setProgram((prev) => ({
+      ...prev,
+      workouts: prev.workouts.map((w) =>
+        w.id === workoutId ? { ...updatedWorkout, id: workoutId } : w
+      ),
+    }));
+    // Clear editing state
+    setEditingWorkoutId(null);
+
+    // Show success message
+    setLastAddedWorkout(updatedWorkout.name);
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 3000);
+  };
+
   const addWorkout = () => {
+    const lastWorkoutAddedName = currentWorkout.name;
     if (currentWorkout.name && currentWorkout.exercises.length > 0) {
-      setProgram((prev) => ({
-        ...prev,
-        workouts: [
-          ...prev.workouts,
-          { ...currentWorkout, id: uuidv4(), templateId: uuidv4() },
-        ],
-      }));
+      if (editingWorkoutId) {
+        // UPDATE existing workout
+        setProgram((prev) => ({
+          ...prev,
+          workouts: prev.workouts.map((w) =>
+            w.id === editingWorkoutId
+              ? { ...currentWorkout, id: editingWorkoutId } // Keep same ID!
+              : w
+          ),
+        }));
+
+        // Clear editing state
+        setEditingWorkoutId(null);
+
+        setLastAddedWorkout(lastWorkoutAddedName);
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000);
+      } else {
+        // ADD new workout
+        setProgram((prev) => ({
+          ...prev,
+          workouts: [
+            ...prev.workouts,
+            { ...currentWorkout, id: uuidv4(), templateId: uuidv4() },
+          ],
+        }));
+        setLastAddedWorkout(lastWorkoutAddedName);
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000); // Hide after 3 seconds
+      }
       setCurrentWorkout({ name: "", exercises: [] });
     }
   };
@@ -214,9 +264,16 @@ const CreateProgram = () => {
             currentExercise={currentExercise}
             setCurrentExercise={setCurrentExercise}
             onAddExercise={addExercise}
+            onEditWorkout={editWorkout}
+            editingWorkoutId={editingWorkoutId}
+            onUpdateWorkout={updateWorkout}
+            onCancelEdit={cancelEdit}
             onRemoveExercise={removeExercise}
             onAddWorkout={addWorkout}
+            onRemoveWorkout={removeWorkout}
             program={program}
+            showSuccessMessage={showSuccessMessage}
+            lastAddedWorkout={lastAddedWorkout}
           />
         );
       case 3:
@@ -233,7 +290,7 @@ const CreateProgram = () => {
   return (
     <div className="create-program-container">
       <div className="create-program-header">
-        <h1>Create New Program</h1>
+        {/* <h1>Create New Program</h1> */}
         <StepIndicator currentStep={currentStep} steps={steps} />
       </div>
 
@@ -254,7 +311,7 @@ const CreateProgram = () => {
             onClick={() => setCurrentStep(currentStep + 1)}
             className="btn-primary"
             disabled={
-              (currentStep === 1 && !program.name) ||
+              (currentStep === 1 && (!program.name || !program.duration)) ||
               (currentStep === 2 && program.workouts.length === 0)
             }
           >
@@ -266,7 +323,7 @@ const CreateProgram = () => {
             className="btn-success"
             disabled={!program.name || program.workouts.length === 0}
           >
-            Save Program
+            Save
           </button>
         )}
 

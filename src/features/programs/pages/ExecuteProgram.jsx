@@ -232,8 +232,8 @@ const ExecuteProgram = () => {
         ) : (
           <div className="workouts-grid">
             {currentWeekWorkouts.map((workout) => (
-              <div key={workout.id} className="workout-card">
-                {/* <nav className="workout-card-menu">
+              <div key={workout.id} className="execution-workout-card">
+                {/* <nav className="execution-workout-card-menu">
                   <DropdownMenu
                     actions={[
                       {
@@ -245,7 +245,7 @@ const ExecuteProgram = () => {
                     ]}
                   />
                 </nav> */}
-                <div className="workout-card-header">
+                <div className="execution-workout-card-header">
                   {isEditing && editingWorkoutId === workout.id ? (
                     <input
                       type="text"

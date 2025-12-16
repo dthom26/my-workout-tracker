@@ -1,3 +1,21 @@
+/**
+ * DEPRECATED FILE
+ * ===============
+ * This file is being replaced by the new CSS architecture in src/styles/
+ * The new system uses CSS variables and supports theming.
+ * 
+ * Most of these styles are now handled by:
+ * - src/styles/base/reset.css
+ * - src/styles/base/elements.css
+ * - src/styles/themes/tokens.css
+ * 
+ * This file is kept temporarily for backwards compatibility.
+ * Once all pages are migrated, this file can be deleted.
+ */
+
+/* These styles are now managed by the new system - commenting out to prevent conflicts */
+
+/*
 * {
     margin: 0;
     padding: 0;
@@ -7,41 +25,19 @@
 html,
 body {
     background-color: #1E1E1E !important;
-    /* Dark charcoal background */
-    /* color: #E0E0E0; */
-    /* Light gray text */
     height: 100%;
-    /* Ensure it applies to the full viewport */
     margin: 0;
-    /* Remove default margin */
     padding: 0;
-    /* Remove default padding */
     font-family: 'Roboto', 'Segoe UI', sans-serif;
-    /* Optional: Ensure consistent font */
 }
 
-
 body {
-    /* Sets the initial minimum height to 100% of the viewport height. */
-    /* This allows the body to stretch to the full viewport height. */
     min-height: 100vh;
-
-    /* Sets the width to 100% of the viewport width. */
-    /* width: 100vw; */
 }
 
 #root {
     background-color: #1E1E1E;
-    /* Dark charcoal background */
 }
-
-/* 
-#root {
-    min-height: 100vh;
-     Ensure the root container stretches to the full viewport height 
-    display: flex;
-    flex-direction: column;
-} */
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -50,16 +46,14 @@ body {
 
 .container {
     max-width: 1200px;
-    /* Adjust based on your design needs */
     margin: 0 auto;
     padding: 0 1.5rem;
-    /* Consistent padding on sides */
     width: 100%;
 }
 
-/* Optional responsive adjustments */
 @media (max-width: 768px) {
     .container {
         padding: 0 1rem;
     }
 }
+*/

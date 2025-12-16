@@ -1,0 +1,248 @@
+/**
+ * BUTTON COMPONENTS
+ * =================
+ * Centralized button styles using design tokens.
+ * 
+ * ARCHITECTURE LESSON:
+ * - Base button class has common styles
+ * - Variant classes (.btn-primary, .btn-secondary) add specific colors
+ * - Size modifiers (.btn-sm, .btn-lg) adjust sizing
+ * - This follows the BEM-like pattern: Block__Element--Modifier
+ * 
+ * WHY THIS WORKS:
+ * - Single source of truth for all buttons
+ * - Easy to maintain and update
+ * - Consistent behavior across the app
+ * - Theme colors update automatically!
+ */
+
+/* Base Button Styles */
+.btn {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+
+    /* Spacing */
+    padding: var(--space-sm) var(--space-lg);
+
+    /* Typography */
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+
+    /* Visual */
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+
+    /* Transitions */
+    transition: all var(--transition-base);
+
+    /* Prevent text selection */
+    user-select: none;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Button Variants - Using our theme colors! */
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-sm) var(--space-lg);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-success {
+    background: #20b2aa;
+    color: #FFFFFF;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.btn-success:hover:not(:disabled) {
+    background: #1BA098;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-error,
+.btn-cancel,
+.btn-danger {
+    background: var(--color-error);
+    color: var(--color-text-inverse);
+}
+
+.btn-error:hover:not(:disabled),
+.btn-cancel:hover:not(:disabled),
+.btn-danger:hover:not(:disabled) {
+    background: var(--color-error-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-info,
+.btn-add {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-lg);
+}
+
+.btn-info:hover:not(:disabled),
+.btn-add:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-sm);
+}
+
+.btn-lg {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-size-lg);
+}
+
+/* Button Styles - Outlined variant */
+.btn-outline {
+    background: transparent;
+    border: var(--border-width-default) solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+/* Button Styles - Ghost variant */
+.btn-ghost {
+    background: transparent;
+    color: var(--color-text-primary);
+    padding: var(--space-xs) var(--space-md);
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background: var(--color-bg-tertiary);
+}
+
+/* Icon Button - Square button for icons */
+.btn-icon {
+    padding: var(--space-sm);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+}
+
+.btn-icon.btn-sm {
+    width: 32px;
+    height: 32px;
+    padding: var(--space-xs);
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.btn-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Legacy class support - maps old classes to new ones */
+.btn-remove {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: var(--border-width-thin) solid rgba(255, 82, 82, 0.08);
+    padding: var(--space-xs);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-remove:hover,
+.btn-remove:focus {
+    background: var(--color-error-alpha);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+    outline: none;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-remove:active {
+    transform: translateY(0);
+    background: rgba(255, 82, 82, 0.16);
+}
+
+/* Sign Out Button - Specific style */
+.btn-sign-out {
+    background: var(--color-error);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-base);
+}
+
+.btn-sign-out:hover {
+    background: var(--color-error-hover);
+    transform: translateY(-1px);
+}
+
+/* Back Button */
+.btn-back {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--space-md);
+}

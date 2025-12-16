@@ -193,6 +193,7 @@ export async function getPreviousSessionData(
       name: previousSession.name,
       exercises: previousSession.exercises || [],
       timestamp: previousSession.timestamp,
+      notes: previousSession.notes || "",
     };
   } catch (error) {
     console.error("Error fetching previous session data:", error);

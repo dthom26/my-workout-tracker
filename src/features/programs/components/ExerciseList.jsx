@@ -4,10 +4,9 @@ const ExerciseList = ({ exercises, onRemoveExercise }) => {
   if (exercises.length === 0) return null;
 
   return (
-    <div className="exercise-list">
-      <h4>Exercises in this workout:</h4>
+    <div className="create-program-exercise-list">
       {exercises.map((exercise) => (
-        <div key={exercise.id} className="exercise-item">
+        <div key={exercise.id} className="create-program-exercise-item">
           <span>
             {exercise.name} - {exercise.sets.length} sets x{" "}
             {exercise.sets[0].reps} reps{" "}

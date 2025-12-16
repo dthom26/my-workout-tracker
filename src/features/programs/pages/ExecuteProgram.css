@@ -1,217 +1,187 @@
+/* ExecuteProgram - Now using CSS Variables for theme support! */
+
 .execute-program-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--space-xl);
     min-height: 100vh;
     background: none;
 }
 
 .execute-program-header {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
     text-align: center;
-    background: #282828;
-    /* Slightly lighter dark */
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
-    /* Electric blue shadow */
-    padding: 2rem 0 1rem 0;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-xl) 0 var(--space-md) 0;
 }
 
 .execute-program-header h1 {
-    color: #00BFFF;
-    /* Electric blue */
-    margin: 1rem 0;
-    font-size: 2.7rem;
-    font-weight: 800;
+    color: var(--color-primary);
+    margin: var(--space-md) 0;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-extrabold);
     letter-spacing: 2px;
 }
 
 .program-info {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-md);
 }
 
 .program-info span {
-    padding: 0.5rem 1.2rem;
-    background: #3A3A3A;
-    /* Dark tertiary */
-    border-radius: 22px;
-    color: #00BFFF;
-    /* Electric blue */
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1.05rem;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--font-size-lg);
 }
 
 .btn-back {
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on light button */
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 0.5rem 1.2rem;
-    border-radius: 6px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: 600;
-    margin-right: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-weight: var(--font-weight-semibold);
+    margin-right: var(--space-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-back:hover {
-    background: #00A6DF;
-    /* Slightly darker blue */
+    background: var(--color-primary-hover);
 }
 
 .week-navigation {
     display: flex;
     justify-content: center;
-    gap: 0.7rem;
-    margin-bottom: 2rem;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
     flex-wrap: wrap;
 }
 
 .week-btn {
-    padding: 0.8rem 1.7rem;
-    border: 2px solid #3A3A3A;
-    /* Dark tertiary */
-    background: #282828;
-    /* Slightly lighter dark */
-    border-radius: 30px;
+    padding: var(--space-sm) var(--space-lg);
+    border: var(--border-width-default) solid var(--color-border-default);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    color: #E0E0E0;
-    /* Light gray text */
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-xs);
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
 }
 
 .week-btn:hover {
-    border-color: #00BFFF;
-    /* Electric blue */
-    background: #323232;
-    /* Slightly lighter on hover */
-    color: #00BFFF;
-    /* Electric blue */
+    border-color: var(--color-primary);
+    background: var(--color-bg-tertiary);
+    color: var(--color-primary);
 }
 
 .week-btn.active {
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on light button */
-    border-color: #00A6DF;
-    /* Slightly darker blue */
-    box-shadow: 0 4px 16px rgba(0, 191, 255, 0.3);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-lg);
 }
 
 .week-content {
-    background: #1E1E1E;
-    /* Dark charcoal background */
-    border-radius: 18px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
-    /* Electric blue shadow */
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-lg);
     position: relative;
 }
 
 .add-workout-menu {
     position: absolute;
-    top: 1.5rem;
-    /* Adjust as needed for vertical alignment */
-    right: 2rem;
-    /* Adjust as needed for horizontal alignment */
-    z-index: 10;
+    top: var(--space-lg);
+    right: var(--space-xl);
+    z-index: var(--z-dropdown);
 }
 
 .week-content h2 {
-    color: #00BFFF;
-    /* Electric blue */
-    margin-bottom: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
     text-align: center;
-    font-size: 2.2rem;
+    font-size: var(--font-size-3xl);
     letter-spacing: 1.5px;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
 }
 
 .workouts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2.5rem;
+    gap: var(--space-2xl);
 }
 
-.workout-card {
-    border: 2px solid #3A3A3A;
-    /* Dark tertiary */
-    border-radius: 18px;
-    padding: 1.7rem;
-    transition: all 0.3s ease;
-    background: #282828;
-    /* Slightly lighter dark */
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+.execution-workout-card {
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    transition: all var(--transition-base);
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-md);
     position: relative;
 }
 
-.workout-card-menu {
+.execution-workout-card-menu {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: var(--space-md);
+    right: var(--space-md);
 }
 
-.workout-card:hover {
-    border-color: #00BFFF;
-    /* Electric blue */
-    box-shadow: 0 8px 32px rgba(0, 191, 255, 0.2);
-    background: #323232;
-    /* Slightly lighter on hover */
+.execution-workout-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
+    background: var(--color-bg-tertiary);
     transform: translateY(-2px);
-    /* Slight lift effect */
 }
 
-.workout-card-header {
+.execution-workout-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.2rem;
-    border-bottom: 2px solid #3A3A3A;
-    /* Dark tertiary */
-    padding-bottom: 1rem;
+    margin-bottom: var(--space-md);
+    border-bottom: var(--border-width-default) solid var(--color-border-default);
+    padding-bottom: var(--space-md);
 }
 
-.workout-card-header h3 {
-    color: #E0E0E0;
-    /* Light gray text */
-    font-size: 1.4rem;
-    font-weight: 700;
+.execution-workout-card-header h3 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
 }
 
 .workout-day {
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on light background */
-    padding: 0.3rem 0.9rem;
-    border-radius: 16px;
-    font-size: 1rem;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-xl);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    box-shadow: var(--shadow-sm);
 }
 
 .workout-exercises {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-lg);
 }
 
 .exercise-summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #3A3A3A;
-    /* Dark tertiary */
-    font-size: 1.08rem;
+    padding: var(--space-xs) 0;
+    border-bottom: var(--border-width-thin) solid var(--color-border-default);
+    font-size: var(--font-size-lg);
 }
 
 .exercise-summary:last-child {
@@ -219,67 +189,58 @@
 }
 
 .exercise-name {
-    font-weight: 700;
-    color: #E0E0E0;
-    /* Light gray text */
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
 }
 
 .exercise-target {
-    color: #00BFFF;
-    /* Electric blue */
-    font-size: 1rem;
-    font-weight: 600;
+    color: var(--color-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
 }
 
 .workout-actions {
     text-align: center;
-    margin-top: 1.2rem;
+    margin-top: var(--space-md);
 }
 
+/* Using global button styles from components/buttons.css */
 .btn-primary {
-    background: linear-gradient(90deg, #00BFFF 0%, #009FDB 100%);
-    /* Electric blue gradient */
-    color: #1E1E1E;
-    /* Dark text on light button */
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: var(--color-text-inverse);
     border: none;
-    padding: 0.8rem 2.2rem;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1.08rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(90deg, #009FDB 0%, #008AC0 100%);
-    /* Slightly darker gradient */
     transform: translateY(-2px);
-    /* Slight lift effect */
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    box-shadow: var(--shadow-lg);
 }
 
 .loading,
 .error {
     text-align: center;
-    padding: 4rem 2rem;
-    font-size: 1.2rem;
+    padding: var(--space-3xl) var(--space-xl);
+    font-size: var(--font-size-xl);
 }
 
 .loading {
-    color: #00BFFF;
-    /* Electric blue */
+    color: var(--color-primary);
 }
 
 .error {
-    color: #FF5252;
-    /* Red for danger */
+    color: var(--color-error);
 }
 
 .no-workouts {
     text-align: center;
-    padding: 3rem;
-    color: #BBBBBB;
-    /* Slightly darker gray */
+    padding: var(--space-2xl);
+    color: var(--color-text-secondary);
     font-style: italic;
 }
 
@@ -287,21 +248,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-md);
 }
 
 @media (max-width: 768px) {
     .execute-program-container {
-        padding: 1rem;
+        padding: var(--space-md);
     }
 
     .week-navigation {
-        gap: 0.25rem;
+        gap: var(--space-2xs);
     }
 
     .week-btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-sm);
     }
 
     .workouts-grid {
@@ -310,11 +271,11 @@
 
     .program-info {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: var(--space-xs);
     }
 
     .header-actions {
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--space-md);
     }
 }

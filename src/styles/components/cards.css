@@ -1,0 +1,196 @@
+/**
+ * CARD COMPONENTS
+ * ===============
+ * Reusable card patterns for content organization.
+ * 
+ * CARDS ARE:
+ * - Elevated content containers
+ * - Used for grouping related information
+ * - Have consistent padding, borders, and shadows
+ */
+
+/* Base Card */
+.card {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    border: var(--border-width-default) solid var(--color-border-default);
+    transition: all var(--transition-base);
+}
+
+/* Interactive Card - Hover effect */
+.card-interactive {
+    cursor: pointer;
+}
+
+.card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+/* Card Header */
+.card-header {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: var(--border-width-default) solid var(--color-border-default);
+}
+
+.card-header h3,
+.card-header h4,
+.card-header h5 {
+    color: var(--color-text-accent);
+    margin-bottom: 0;
+}
+
+/* Card Body */
+.card-body {
+    color: var(--color-text-secondary);
+}
+
+/* Card Footer */
+.card-footer {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: var(--border-width-thin) solid var(--color-border-default);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+}
+
+/* Card Variants */
+.card-primary {
+    border-color: var(--color-primary);
+}
+
+.card-success {
+    border-left: var(--border-width-thick) solid var(--color-success);
+}
+
+.card-warning {
+    border-left: var(--border-width-thick) solid var(--color-warning);
+}
+
+.card-error {
+    border-left: var(--border-width-thick) solid var(--color-error);
+}
+
+/* Exercise Card - Specific to your app */
+.exercise-card {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    border: var(--border-width-default) solid var(--color-border-default);
+    position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Drag and Drop States */
+.exercise-card.dragging {
+    opacity: 0.7;
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+    z-index: 100;
+}
+
+.exercise-card.drag-over {
+    border-top: var(--border-width-default) dashed var(--color-primary);
+}
+
+/* Drag Handle */
+.drag-handle {
+    cursor: grab;
+    padding: 0 var(--space-sm);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-sm);
+    touch-action: none;
+}
+
+.dragging .drag-handle {
+    cursor: grabbing;
+}
+
+/* Navigation Card - For dashboard */
+.nav-card {
+    background: var(--color-bg-secondary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.create-program-card:hover {
+    box-shadow: 0 8px 32px rgba(32, 178, 170, 0.25);
+    border-color: var(--color-success);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+/* Exercise Item - List item style */
+.exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-sm);
+    margin-bottom: var(--space-xs);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    border-left: var(--border-width-thick) solid var(--color-success);
+    gap: var(--space-sm);
+}
+
+.exercise-item>span {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-right: var(--space-sm);
+    word-break: break-word;
+}
+
+/* Exercise Preview */
+.exercise-preview {
+    background: var(--color-bg-secondary);
+    border-left: var(--border-width-thick) solid var(--color-success);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.exercise-name {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.exercise-details {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+@media (min-width: 769px) {
+    .exercise-preview {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+}

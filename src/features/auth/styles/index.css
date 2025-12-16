@@ -5,12 +5,15 @@
     padding: 0;
 }
 
+/* Commenting out body background to prevent conflicts with main theme system */
+/*
 body,
 html {
     height: 100%;
     font-family: 'Inter', Arial, sans-serif;
     background: #f5f7fa;
 }
+*/
 
 /* Auth container */
 .auth-container {

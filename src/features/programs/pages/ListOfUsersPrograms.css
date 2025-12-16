@@ -1,88 +1,73 @@
+/* ListOfUsersPrograms - Now using CSS Variables for theme support! */
+
 .user-programs-container {
     max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #1E1E1E;
-    /* Dark charcoal background */
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 191, 255, 0.15);
-    /* Electric blue shadow */
+    margin: 0 auto;
+    padding: var(--space-xl);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
 }
 
 .user-programs-container h1 {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #00BFFF;
-    /* Electric blue */
-    font-size: 2rem;
-    font-weight: 800;
+    margin-bottom: var(--space-xl);
+    color: var(--color-primary);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-extrabold);
 }
 
 .user-programs-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--space-xl);
     justify-content: center;
 }
 
 .user-program-card {
-    background: #282828;
-    /* Slightly lighter dark */
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    border: 2px solid #3A3A3A;
-    /* Dark tertiary */
-    padding: 1.5rem;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: var(--border-width-default) solid var(--color-border-default);
+    padding: var(--space-lg);
     min-width: 260px;
     max-width: 320px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
+    position: relative;
 }
 
 .user-program-card:hover {
-    border-color: #00BFFF;
-    /* Electric blue */
-    box-shadow: 0 6px 24px rgba(0, 191, 255, 0.2);
-    background: #323232;
-    /* Slightly lighter on hover */
-    /* transform: translateY(-2px); */
-    /* Slight lift effect */
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
+    background: var(--color-bg-tertiary);
+    transform: translateY(-2px);
 }
 
 .user-program-card h2 {
-    color: #E0E0E0;
-    /* Light gray text */
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-xs);
 }
 
 .user-program-card p {
-    color: #BBBBBB;
-    /* Slightly darker gray */
-    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xs);
 }
 
 .user-program-card span {
     display: inline-block;
-    background: #00BFFF;
-    /* Electric blue */
-    color: #1E1E1E;
-    /* Dark text on blue */
-    border-radius: 12px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.user-program-card {
-    position: relative;
-    /* ...existing styles... */
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xs) var(--space-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
 }
 
 .user-program-card .dropdown {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-
+    top: var(--space-sm);
+    right: var(--space-sm);
 }

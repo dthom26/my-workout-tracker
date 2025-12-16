@@ -1,0 +1,195 @@
+/**
+ * DESIGN TOKENS
+ * =============
+ * This is the single source of truth for all design values in your app.
+ * 
+ * NAMING CONVENTION:
+ * --{category}-{property}-{variant}
+ * 
+ * WHY CSS VARIABLES?
+ * - Change values in one place, update everywhere
+ * - Enable theme switching at runtime
+ * - Can be changed with JavaScript
+ * - Better than SASS variables for themes
+ */
+
+:root {
+    /* ==================== */
+    /* COLOR PALETTE */
+    /* ==================== */
+
+    /* Brand Colors - These define your app's personality */
+    --color-electric-blue: #00BFFF;
+    --color-teal: #20B2AA;
+    --color-purple: #8a2be2;
+    --color-success-green: #4CAF50;
+    --color-error-red: #dc3545;
+    --color-warning-orange: #ff9800;
+    --color-info-cyan: #17a2b8;
+
+    /* Neutral Colors - For backgrounds and text */
+    --color-dark-charcoal: #1E1E1E;
+    --color-dark-secondary: #282828;
+    --color-dark-tertiary: #323232;
+    --color-dark-border: #3A3A3A;
+    --color-light-gray: #E0E0E0;
+    --color-medium-gray: #BBBBBB;
+    --color-white: #FFFFFF;
+
+    /* ==================== */
+    /* SEMANTIC COLORS */
+    /* ==================== */
+    /* These describe WHAT the color is used for, not what it looks like.
+     This makes theme switching easy! */
+
+    /* Background Colors */
+    --color-bg-primary: var(--color-dark-charcoal);
+    --color-bg-secondary: var(--color-dark-secondary);
+    --color-bg-tertiary: var(--color-dark-tertiary);
+    --color-bg-elevated: var(--color-dark-secondary);
+    /* For cards, modals */
+
+    /* Text Colors */
+    --color-text-primary: var(--color-light-gray);
+    --color-text-secondary: var(--color-medium-gray);
+    --color-text-inverse: var(--color-dark-charcoal);
+    /* Text on light backgrounds */
+    --color-text-accent: var(--color-electric-blue);
+
+    /* Border Colors */
+    --color-border-default: var(--color-dark-border);
+    --color-border-focus: var(--color-electric-blue);
+    --color-border-success: var(--color-teal);
+
+    /* Interactive Colors */
+    --color-primary: var(--color-electric-blue);
+    --color-primary-hover: #0099CC;
+    --color-secondary: var(--color-purple);
+    --color-secondary-hover: #7526c2;
+    --color-success: #20b2aa;
+    --color-success-hover: #1BA098;
+    --color-error: var(--color-error-red);
+    --color-error-hover: #c82333;
+    --color-warning: var(--color-warning-orange);
+    --color-info: var(--color-info-cyan);
+
+    /* ==================== */
+    /* SPACING SCALE */
+    /* ==================== */
+    /* Use a consistent scale for margins, padding, and gaps.
+     This creates visual harmony! */
+
+    --space-2xs: 0.25rem;
+    /* 4px */
+    --space-xs: 0.5rem;
+    /* 8px */
+    --space-sm: 0.75rem;
+    /* 12px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+    --space-2xl: 3rem;
+    /* 48px */
+    --space-3xl: 4rem;
+    /* 64px */
+
+    /* ==================== */
+    /* TYPOGRAPHY */
+    /* ==================== */
+
+    /* Font Families */
+    --font-primary: 'Roboto', 'Segoe UI', sans-serif;
+    --font-display: 'Inter', Arial, sans-serif;
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;
+    /* 12px */
+    --font-size-sm: 0.875rem;
+    /* 14px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.25rem;
+    /* 20px */
+    --font-size-2xl: 1.5rem;
+    /* 24px */
+    --font-size-3xl: 2rem;
+    /* 32px */
+    --font-size-4xl: 2.5rem;
+    /* 40px */
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    /* Line Heights */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* ==================== */
+    /* BORDERS & RADIUS */
+    /* ==================== */
+
+    --border-width-thin: 1px;
+    --border-width-default: 2px;
+    --border-width-thick: 3px;
+
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 10px;
+    --radius-xl: 14px;
+    --radius-2xl: 18px;
+    --radius-full: 9999px;
+
+    /* ==================== */
+    /* SHADOWS */
+    /* ==================== */
+
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 2px 10px rgba(0, 191, 255, 0.1);
+    --shadow-lg: 0 4px 24px rgba(0, 191, 255, 0.15);
+    --shadow-xl: 0 8px 32px rgba(0, 191, 255, 0.25);
+
+    /* ==================== */
+    /* TRANSITIONS */
+    /* ==================== */
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+    --transition-slow: 0.3s ease;
+
+    /* ==================== */
+    /* Z-INDEX SCALE */
+    /* ==================== */
+    /* Prevents z-index conflicts! */
+
+    --z-dropdown: 10;
+    --z-sticky: 20;
+    --z-fixed: 30;
+    --z-modal-backdrop: 40;
+    --z-modal: 50;
+    --z-popover: 60;
+    --z-tooltip: 70;
+
+    /* ==================== */
+    /* LAYOUT */
+    /* ==================== */
+
+    --container-max-width: 1200px;
+    --container-padding: 1.5rem;
+
+    /* Breakpoints (for reference in media queries) */
+    /* Usage: @media (max-width: 768px) */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+}

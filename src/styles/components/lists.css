@@ -1,0 +1,79 @@
+/**
+ * LIST COMPONENTS
+ * ===============
+ * Styles for various list patterns used in the app.
+ */
+
+/* Exercise List */
+.exercise-list {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.exercise-list-session {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    transition: height var(--transition-base);
+}
+
+/* Exercise Section */
+.exercise-section {
+    border-top: var(--border-width-default) solid var(--color-border-default);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.exercise-section h3 {
+    color: var(--color-text-accent);
+    margin-bottom: var(--space-md);
+}
+
+/* Program Preview */
+.program-preview {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+.preview-header {
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+.preview-header h3 {
+    color: var(--color-text-accent);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-xs);
+}
+
+.program-meta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.program-meta span {
+    color: var(--color-primary);
+}
+
+/* Workout Preview */
+.saved-workouts-section {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Nav Cards Grid */
+.nav-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}

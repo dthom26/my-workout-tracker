@@ -9,6 +9,7 @@ const PreviousWeekSummary = ({
   workoutId,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isNotesVisible, setIsNotesVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleWeekClick = (e) => {
@@ -41,13 +42,16 @@ const PreviousWeekSummary = ({
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+  const toggleNotesVisibility = () => {
+    setIsNotesVisible(!isNotesVisible);
+  };
 
   const formatSetDisplay = (set) => {
     const weight = set.weight ? `${set.weight}lbs` : "BW";
     const reps = set.reps || "0";
     return `${weight} × ${reps}`;
   };
-
+  console.log("PreviousWeekSummary previousSession:", previousSession);
   return (
     <div className="previous-week-summary">
       <div className="summary-header" onClick={toggleExpanded}>
@@ -69,7 +73,31 @@ const PreviousWeekSummary = ({
           <div className="session-date">
             {new Date(previousSession.timestamp).toLocaleDateString()}
           </div>
-
+          <div className="collapsible-notes-panel">
+            <div
+              className="notes-panel-header"
+              onClick={toggleNotesVisibility}
+              style={{
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "8px",
+              }}
+              aria-expanded={isNotesVisible}
+              aria-controls="session-notes"
+              id="notes-panel-header"
+            >
+              <span className="notes-chevron" style={{ marginRight: "6px" }}>
+                {isNotesVisible ? "▼" : "▶"}
+              </span>
+              <span className="notes-label">Session Notes</span>
+            </div>
+            {isNotesVisible && (
+              <div className="session-notes" id="session-notes">
+                {previousSession.notes || "No notes"}
+              </div>
+            )}
+          </div>
           <div className="exercises-list">
             {previousSession.exercises.map((exercise, index) => (
               <div key={exercise.id || index} className="exercise-item">

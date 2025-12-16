@@ -1,127 +1,160 @@
+/* PreviousWeekSummary - Now using CSS Variables for theme support! */
+
+/* Glow effect when notes panel is open */
+.previous-week-summary .session-notes {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+    transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
 .previous-week-summary {
-    background: #282828;
-    border: 2px solid #3A3A3A;
-    border-radius: 14px;
-    margin-bottom: 1rem;
+    background: var(--color-bg-secondary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
     overflow: hidden;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.1);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-md);
 }
 
 .previous-week-summary.loading {
-    background: #1E1E1E;
-    color: #BBBBBB;
+    background: var(--color-bg-primary);
+    color: var(--color-text-secondary);
 }
 
 .previous-week-summary.no-data {
-    background: #2D2416;
-    border-color: #8B6914;
-    color: #FFD700;
+    background: var(--color-bg-warning);
+    border-color: var(--color-warning);
+    color: var(--color-warning);
 }
 
 .previous-week-summary .summary-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: var(--space-md);
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.2s ease;
+    transition: background-color var(--transition-fast);
 }
 
 .previous-week-summary .summary-header:hover {
-    background-color: rgba(0, 191, 255, 0.05);
+    background-color: var(--color-primary-alpha);
 }
 
 .previous-week-summary .header-content {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .previous-week-summary .header-content h3 {
     margin: 0;
-    font-size: 1.1rem;
-    color: #00BFFF;
-    font-weight: 600;
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
 }
 
 .previous-week-summary .week-info {
-    font-size: 0.9rem;
-    color: #E0E0E0;
-    background: #1E1E1E;
-    border: 1px solid #3A3A3A;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-full);
 }
 
 .previous-week-summary .toggle-btn {
     background: none;
     border: none;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     cursor: pointer;
-    color: #00BFFF;
-    padding: 0.25rem;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    color: var(--color-primary);
+    padding: var(--space-2xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
 }
 
 .previous-week-summary .toggle-btn:hover {
-    background-color: rgba(0, 191, 255, 0.1);
-    color: #20B2AA;
+    background-color: var(--color-primary-alpha);
+    color: var(--color-success);
 }
 
 .previous-week-summary .summary-content {
-    border-top: 2px solid #3A3A3A;
-    padding: 1rem;
-    background: #1E1E1E;
+    border-top: var(--border-width-default) solid var(--color-border-default);
+    padding: var(--space-md);
+    background: var(--color-bg-primary);
 }
 
 .previous-week-summary .session-date {
-    font-size: 0.9rem;
-    color: #BBBBBB;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
     text-align: center;
 }
 
 .previous-week-summary .exercises-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-sm);
 }
 
 .previous-week-summary .exercise-item {
-    padding: 0.75rem;
-    background: #282828;
-    border-radius: 8px;
-    border-left: 3px solid #00BFFF;
-    border: 1px solid #3A3A3A;
+    padding: var(--space-sm);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-primary);
+    border: var(--border-width-thin) solid var(--color-border-default);
 }
 
 .previous-week-summary .exercise-name-previous-week {
-    font-weight: 600;
-    color: #E0E0E0;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+    font-size: var(--font-size-base);
     word-break: break-word;
     overflow-wrap: anywhere;
+}
+
+/* Match session notes style to modal notes-content */
+.previous-week-summary .session-notes {
+    background: var(--color-bg-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    min-height: 100px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.previous-week-summary .session-notes strong {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--space-xs);
 }
 
 .previous-week-summary .sets-display {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .previous-week-summary .set-item {
-    background: #1E1E1E;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: #20B2AA;
-    border: 1px solid #3A3A3A;
+    background: var(--color-bg-primary);
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+    border: var(--border-width-thin) solid var(--color-border-default);
     font-family: 'Roboto', 'Segoe UI', sans-serif;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -133,19 +166,72 @@
     .previous-week-summary .header-content {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.25rem;
+        gap: var(--space-2xs);
     }
 
     .previous-week-summary .sets-display {
         flex-direction: column;
-        /* Stack sets vertically on mobile */
         align-items: flex-start;
-        /* Align to the left (optional, for consistency) */
-        gap: 0.25rem;
-        /* Reduce gap slightly for tighter vertical spacing */
+        gap: var(--space-2xs);
     }
 
     .previous-week-summary .set-item {
-        font-size: 0.8rem;
+        font-size: var(--font-size-xs);
     }
+}
+
+/* Collapsible notes panel styles */
+.previous-week-summary .collapsible-notes-panel {
+    margin-bottom: var(--space-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    box-shadow: var(--shadow-sm);
+    transition: background var(--transition-fast);
+}
+
+.previous-week-summary .notes-panel-header {
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-bg-primary);
+    border-bottom: var(--border-width-thin) solid var(--color-border-default);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    transition: background var(--transition-fast);
+}
+
+.previous-week-summary .notes-panel-header:hover {
+    background: var(--color-primary-alpha);
+    color: var(--color-success);
+}
+
+.previous-week-summary .notes-chevron {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+.previous-week-summary .notes-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.previous-week-summary .session-notes {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-top: var(--border-width-thin) solid var(--color-border-default);
+    margin-bottom: var(--space-xs);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.previous-week-summary .session-notes strong {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--space-xs);
 }

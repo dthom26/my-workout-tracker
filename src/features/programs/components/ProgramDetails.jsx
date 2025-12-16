@@ -1,4 +1,5 @@
 import React from "react";
+import "../components/styles/ProgramDetails.css";
 
 const ProgramDetails = ({ program, setProgram }) => {
   return (
@@ -8,6 +9,7 @@ const ProgramDetails = ({ program, setProgram }) => {
         <label>Program Name</label>
         <input
           type="text"
+          required
           value={program.name}
           onChange={(e) =>
             setProgram((prev) => ({ ...prev, name: e.target.value }))
@@ -33,6 +35,7 @@ const ProgramDetails = ({ program, setProgram }) => {
         <div className="form-group">
           <label>Duration (weeks)</label>
           <input
+            required
             type="number"
             value={program.duration}
             onChange={(e) =>
@@ -44,7 +47,7 @@ const ProgramDetails = ({ program, setProgram }) => {
             placeholder="e.g., 12"
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Difficulty</label>
           <select
             value={program.difficulty}
@@ -59,7 +62,7 @@ const ProgramDetails = ({ program, setProgram }) => {
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </div>
   );

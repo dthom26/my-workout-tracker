@@ -1,0 +1,45 @@
+/**
+ * LIGHT THEME
+ * ===========
+ * An alternative light theme for users who prefer it.
+ * This demonstrates the power of CSS variables!
+ * 
+ * THEME SWITCHING:
+ * To switch themes, just change the HTML attribute:
+ * document.documentElement.setAttribute('data-theme', 'light');
+ */
+
+[data-theme="light"] {
+    /* Background Colors - Vibrant Balanced theme */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #fafafa;
+    --color-bg-tertiary: #f4f4f5;
+    --color-bg-elevated: #FFFFFF;
+
+    /* Text Colors - Near black with zinc tones */
+    --color-text-primary: #18181b;
+    --color-text-secondary: #71717a;
+    --color-text-inverse: #FFFFFF;
+    --color-text-accent: #2563eb;
+
+    /* Border Colors - Light zinc */
+    --color-border-default: #e4e4e7;
+    --color-border-focus: #2563eb;
+    --color-border-success: #20b2aa;
+
+    /* Interactive Elements - Richer, more vibrant palette */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-secondary: #8a2be2;
+    --color-secondary-hover: #7526c2;
+    --color-success: #20b2aa;
+    --color-success-hover: #1BA098;
+    --color-error: #EF4444;
+    --color-error-hover: #DC2626;
+
+    /* Shadows - clean and subtle */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.10);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+}

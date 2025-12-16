@@ -1,0 +1,81 @@
+/**
+ * MAIN STYLESHEET
+ * ===============
+ * Single entry point for all CSS.
+ * 
+ * IMPORT ORDER MATTERS! (ITCSS Methodology)
+ * =========================================
+ * 
+ * 1. Settings  - CSS Variables and design tokens
+ * 2. Tools     - (We're not using SASS, so skip)
+ * 3. Generic   - CSS resets and normalizations
+ * 4. Elements  - Base HTML element styles
+ * 5. Objects   - Layout patterns (containers, grids)
+ * 6. Components- UI components (buttons, cards, forms)
+ * 7. Utilities - Helper classes
+ * 
+ * WHY THIS ORDER?
+ * - Starts with low specificity (generic)
+ * - Ends with high specificity (utilities)
+ * - Follows natural cascade
+ * - Prevents specificity conflicts
+ * - Makes overrides predictable
+ * 
+ * USAGE:
+ * Import this file ONCE in your main.jsx:
+ * import './styles/main.css';
+ */
+
+/* ==================== */
+/* 1. SETTINGS (Design Tokens) */
+/* ==================== */
+@import './themes/tokens.css';
+@import './themes/dark.css';
+@import './themes/light.css';
+
+/* ==================== */
+/* 2. GENERIC (Resets) */
+/* ==================== */
+@import './base/reset.css';
+
+/* ==================== */
+/* 3. ELEMENTS (Base HTML) */
+/* ==================== */
+@import './base/typography.css';
+@import './base/elements.css';
+
+/* ==================== */
+/* 4. OBJECTS (Layout) */
+/* ==================== */
+@import './layout/containers.css';
+
+/* ==================== */
+/* 5. COMPONENTS (UI Components) */
+/* ==================== */
+@import './components/buttons.css';
+@import './components/forms.css';
+@import './components/cards.css';
+@import './components/headers.css';
+@import './components/step-indicator.css';
+@import './components/lists.css';
+
+/* ==================== */
+/* 6. UTILITIES (Helpers) */
+/* ==================== */
+@import './utilities/spacing.css';
+
+/* ==================== */
+/* THEME INITIALIZATION */
+/* ==================== */
+
+/**
+ * The default theme is set in dark.css and initialized
+ * via themeUtils.js in main.jsx
+ * 
+ * DEBUGGING TIP:
+ * If you see styles not applying, check:
+ * 1. Import order in this file
+ * 2. Specificity - are you using !important unnecessarily?
+ * 3. CSS variable fallbacks - var(--color-primary, #00BFFF)
+ * 4. Browser dev tools - which rule is winning?
+ */

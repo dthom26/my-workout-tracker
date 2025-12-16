@@ -1,0 +1,122 @@
+/**
+ * LAYOUT CONTAINERS
+ * =================
+ * Reusable container patterns for consistent page layouts.
+ * 
+ * BEST PRACTICE:
+ * - Use containers to constrain content width
+ * - Provides consistent padding on mobile
+ * - Centers content on large screens
+ */
+
+/* Standard Container - Used on most pages */
+.container {
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    width: 100%;
+}
+
+/* Responsive padding adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+}
+
+/* Page Container - Full height pages with background */
+.page-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-xl);
+    min-height: 100vh;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        padding: var(--space-md);
+        border-radius: 0;
+        /* Full width on mobile */
+    }
+}
+
+/* Narrow Container - For forms and focused content */
+.container-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    min-height: 100vh;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .container-narrow {
+        padding: var(--space-md);
+    }
+}
+
+/* Section Container - Spacing between page sections */
+.section {
+    margin-bottom: var(--space-2xl);
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+/* Card Container - Elevated content blocks */
+.card {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    border: var(--border-width-default) solid var(--color-border-default);
+}
+
+/* Flex Containers - Common flex patterns */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* Grid Container - Responsive grid */
+.grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}

@@ -2,7 +2,7 @@ import React from "react";
 
 const WorkoutPreview = ({ workout, onRemoveWorkout }) => {
   return (
-    <div className="workout-preview">
+    <div className="saved-workouts-section">
       <div className="workout-header">
         <h5>{workout.name}</h5>
         <button
@@ -14,9 +14,9 @@ const WorkoutPreview = ({ workout, onRemoveWorkout }) => {
       </div>
       <div className="exercises-preview">
         {workout.exercises.map((exercise) => (
-          <div key={exercise.id} className="exercise-preview">
-            <div className="exercise-name">{exercise.name}</div>
-            <div className="exercise-details">
+          <div key={exercise.id} className="create-program-exercise-preview">
+            <div className="create-program-exercise-name">{exercise.name}</div>
+            <div className="create-program-exercise-details">
               {exercise.sets.length} sets × {exercise.sets[0].reps} reps
               {/* {exercise.sets[0].weight && ` @ ${exercise.sets[0].weight}`}
               {exercise.sets[0].restTime &&

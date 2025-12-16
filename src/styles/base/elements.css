@@ -1,0 +1,50 @@
+/**
+ * BASE ELEMENT STYLES
+ * ===================
+ * Default styles for common HTML elements.
+ */
+
+/* Body and Root */
+html,
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+}
+
+body {
+    min-height: 100vh;
+}
+
+#root {
+    background-color: var(--color-bg-primary);
+    min-height: 100vh;
+}
+
+/* Lists */
+ul,
+ol {
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+li {
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: var(--border-width-thin) solid var(--color-border-default);
+    margin: var(--space-xl) 0;
+}
+
+/* Blockquote */
+blockquote {
+    border-left: var(--border-width-thick) solid var(--color-primary);
+    padding-left: var(--space-lg);
+    margin: var(--space-xl) 0;
+    font-style: italic;
+    color: var(--color-text-secondary);
+}

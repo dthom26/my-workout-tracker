@@ -1,5 +1,10 @@
 import SessionNotesModal from "./SessionNotesModal";
-const SessionActions = ({ workout, setWorkout, handleSaveSession }) => {
+const SessionActions = ({
+  workout,
+  setWorkout,
+  handleSaveSession,
+  saveSuccess,
+}) => {
   //   const { workoutId, programId, week } = useParams();
   //   const { user } = useAuth();
   //   const navigate = useNavigate();
@@ -77,8 +82,11 @@ const SessionActions = ({ workout, setWorkout, handleSaveSession }) => {
     <div className="session-actions">
       <SessionNotesModal notes={workout.notes} onSave={handleSaveNotes} />
       <div className="session-action-buttons">
-        <button className="btn-save" onClick={handleSaveSession}>
-          Save Session
+        <button
+          className={`btn-save ${saveSuccess ? "btn-save-success" : ""}`}
+          onClick={handleSaveSession}
+        >
+          {saveSuccess ? "Saved!" : "Save Session"}
         </button>
 
         {/* <button

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/context/AuthContext";
+import ThemeToggle from "../../shared/components/ThemeToggle";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -22,9 +23,12 @@ const Dashboard = () => {
       {/* Header */}
       <div className="dashboard-header">
         {/* <h1 className="dashboard-title">Workout Tracker</h1> */}
-        <button className="btn-sign-out" onClick={handleSignOut}>
-          Sign Out
-        </button>
+        <div className="dashboard-header-actions">
+          <ThemeToggle />
+          <button className="btn-sign-out" onClick={handleSignOut}>
+            Sign Out
+          </button>
+        </div>
       </div>
 
       {/* Welcome Section */}

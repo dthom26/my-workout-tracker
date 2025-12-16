@@ -26,9 +26,9 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
   }, []);
 
   return (
-    <div className="exercise-section">
+    <div className="create-program-exercise-section">
       <h3>Add Exercise</h3>
-      <div className="form-row">
+      <div className="create-program-form-row">
         <input
           type="text"
           value={exercise.name}
