@@ -1,0 +1,102 @@
+/* WorkoutPreview.css - BEM naming convention for WorkoutPreview component */
+
+/* Container for workout preview */
+.workout-preview__container {
+    /* background: var(--color-bg-tertiary); */
+    /* border-radius: var(--radius-md); */
+    padding: 0;
+    margin-bottom: var(--space-md);
+    /* box-shadow: var(--shadow-sm); */
+}
+
+/* Header with workout name and remove button */
+.workout-preview__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    border-bottom: var(--border-width-default) solid var(--color-border-default);
+    padding-bottom: var(--space-xs);
+}
+
+.workout-preview__header h5 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+}
+
+/* Exercises preview list */
+.workout-preview__exercises {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Individual exercise preview */
+.workout-preview__exercise {
+    background: var(--color-bg-secondary);
+    border-left: var(--border-width-thick) solid var(--color-success);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.workout-preview__exercise-name {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+    display: block;
+}
+
+.workout-preview__exercise-details {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    display: block;
+}
+
+/* Desktop: place name and details on the same row when there's space */
+@media (min-width: 769px) {
+    .workout-preview__exercise {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+
+    .workout-preview__exercise-details {
+        justify-self: start;
+        margin: 0;
+    }
+}
+
+/* Remove button - matches .btn-remove from global buttons.css */
+.workout-preview__remove-button {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: var(--border-width-thin) solid rgba(255, 82, 82, 0.08);
+    padding: var(--space-xs);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.workout-preview__remove-button:hover,
+.workout-preview__remove-button:focus {
+    background: var(--color-error-alpha);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+    outline: none;
+    box-shadow: var(--shadow-md);
+}
+
+.workout-preview__remove-button:active {
+    transform: translateY(0);
+    background: rgba(255, 82, 82, 0.16);
+}

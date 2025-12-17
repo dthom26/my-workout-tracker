@@ -1,0 +1,92 @@
+/* ExerciseForm.css - BEM naming convention for ExerciseForm component */
+
+/* Container section */
+.exercise-form__section {
+    border-top: var(--border-width-default) solid var(--color-border-default);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+/* Heading */
+.exercise-form__heading {
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+}
+
+/* Form row - grid layout for inputs */
+.exercise-form__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+    align-items: end;
+}
+
+/* Input fields */
+.exercise-form__input {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-base);
+}
+
+.exercise-form__input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.exercise-form__input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+/* Button - matches .btn-add from global buttons.css */
+.exercise-form__button {
+    /* Base button styles */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+
+    /* Spacing */
+    padding: var(--space-sm) var(--space-lg);
+    height: 100%;
+
+    /* Typography */
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+
+    /* Visual */
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+
+    /* Transitions */
+    transition: all var(--transition-base);
+
+    /* Prevent text selection */
+    user-select: none;
+}
+
+.exercise-form__button:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.exercise-form__button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.exercise-form__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

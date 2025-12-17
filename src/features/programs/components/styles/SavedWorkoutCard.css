@@ -1,0 +1,385 @@
+/* SavedWorkoutCard.css - BEM naming convention for SavedWorkoutCard component */
+
+/* Main card container */
+.saved-workout-card {
+    width: 100%;
+    background: var(--color-bg-secondary);
+    border-left: 4px solid var(--color-success);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    box-sizing: border-box;
+}
+
+.saved-workout-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Edit mode styling */
+.saved-workout-card--editing {
+    border: 2px solid var(--color-primary);
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-lg);
+}
+
+.saved-workout-card--editing:hover {
+    box-shadow: var(--shadow-lg);
+    background: var(--color-bg-secondary);
+    transform: none;
+}
+
+/* VIEW MODE */
+.saved-workout-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-workout-card__exercises {
+    margin-top: var(--space-md);
+}
+
+.saved-workout-card__exercises ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.saved-workout-card__exercises li {
+    padding: var(--space-xs);
+    background: #1e1e1e;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.saved-workout-card__exercises li strong {
+    color: var(--color-text-primary);
+}
+
+.saved-workout-card__actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border-default);
+}
+
+.saved-workout-card__btn-edit,
+.saved-workout-card__btn-delete {
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: none;
+}
+
+.saved-workout-card__btn-edit {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.saved-workout-card__btn-edit:hover {
+    background: var(--color-primary-hover);
+}
+
+.saved-workout-card__btn-delete {
+    background: transparent;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+}
+
+.saved-workout-card__btn-delete:hover {
+    background: var(--color-error);
+    color: var(--color-text-inverse);
+}
+
+/* EDIT MODE */
+.saved-workout-card__edit-mode {
+    padding: 0;
+}
+
+.saved-workout-card__edit-header {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border-default);
+}
+
+.saved-workout-card__edit-indicator {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.saved-workout-card__edit-body {
+    margin-bottom: var(--space-lg);
+}
+
+.saved-workout-card__form-group {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.saved-workout-card__form-group label {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.saved-workout-card__form-group input {
+    width: 100%;
+    padding: var(--space-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.saved-workout-card__form-group input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+/* Exercises in edit mode */
+.saved-workout-card__edit-exercises {
+    margin-top: var(--space-lg);
+    padding: 0;
+}
+
+.saved-workout-card__edit-exercises h5 {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.saved-workout-card__edit-exercises ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Exercise item in edit mode */
+.saved-workout-card__exercise-item {
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.saved-workout-card__exercise-item:has(.saved-workout-card__exercise-edit-form) {
+    padding: 0;
+}
+
+/* Exercise view mode (within edit) */
+.saved-workout-card__exercise-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.saved-workout-card__exercise-info {
+    flex: 1;
+}
+
+.saved-workout-card__exercise-actions {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.saved-workout-card__btn-edit-exercise,
+.saved-workout-card__btn-delete-exercise {
+    padding: var(--space-2xs) var(--space-xs);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    transition: transform var(--transition-fast);
+}
+
+.saved-workout-card__btn-edit-exercise:hover {
+    transform: scale(1.2);
+}
+
+.saved-workout-card__btn-delete-exercise:hover {
+    transform: scale(1.2);
+    color: var(--color-error);
+}
+
+/* Exercise edit form */
+.saved-workout-card__exercise-edit-form {
+    padding: var(--space-md);
+    background: transparent;
+}
+
+.saved-workout-card__exercise-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.saved-workout-card__exercise-form-row:last-of-type {
+    margin-bottom: 0;
+}
+
+.saved-workout-card__input-exercise-name,
+.saved-workout-card__input-sets,
+.saved-workout-card__input-reps {
+    display: block;
+    width: 100%;
+    padding: var(--space-md);
+    font-size: var(--font-size-base);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    text-align: left;
+    box-sizing: border-box;
+    transition: border-color var(--transition-base);
+}
+
+.saved-workout-card__input-exercise-name:focus,
+.saved-workout-card__input-sets:focus,
+.saved-workout-card__input-reps:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.saved-workout-card__exercise-edit-actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.saved-workout-card__btn-save-exercise {
+    flex: 1;
+    background: var(--color-success);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.saved-workout-card__btn-save-exercise:hover {
+    background: var(--color-success-hover);
+}
+
+.saved-workout-card__btn-cancel-exercise {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-default);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.saved-workout-card__btn-cancel-exercise:hover {
+    background: var(--color-bg-tertiary);
+}
+
+/* Add exercise button */
+.saved-workout-card__add-exercise-btn {
+    width: 100%;
+    margin-top: var(--space-md);
+    background: transparent;
+    color: var(--color-secondary);
+    border: 1px dashed var(--color-border-default);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-base);
+}
+
+.saved-workout-card__add-exercise-btn:hover {
+    background: rgba(138, 43, 226, 0.05);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+/* Add exercise form */
+.saved-workout-card__add-exercise-form {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-default);
+    border-left: 3px solid var(--color-secondary);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.saved-workout-card__add-exercise-form h6 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+
+/* Workout-level save/cancel actions */
+.saved-workout-card__edit-actions {
+    display: flex;
+    gap: var(--space-md);
+    border-top: 1px solid var(--color-border-default);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.saved-workout-card__btn-save-workout {
+    flex: 1;
+    background: var(--color-success);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.saved-workout-card__btn-save-workout:hover {
+    background: var(--color-success-hover);
+}
+
+.saved-workout-card__btn-cancel-workout {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-default);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.saved-workout-card__btn-cancel-workout:hover {
+    background: var(--color-bg-tertiary);
+}

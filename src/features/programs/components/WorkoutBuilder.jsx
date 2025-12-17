@@ -3,6 +3,7 @@ import ExerciseForm from "./ExerciseForm";
 import ExerciseList from "./ExerciseList";
 import ProgramPreview from "./ProgramPreview";
 import SavedWorkoutCard from "./SavedWorkoutCard";
+import "./styles/WorkoutBuilder.css";
 
 const WorkoutBuilder = ({
   currentWorkout,
@@ -22,31 +23,30 @@ const WorkoutBuilder = ({
   program, // Receive the program state as a prop
 }) => {
   return (
-    <div className="step-content">
-      <h2>Build Your Workouts</h2>
+    <div className="workout-builder__container">
+      <h2 className="workout-builder__heading">Build Your Workouts</h2>
       {/* Success Toast */}
       {showSuccessMessage && (
-        <div className="success-toast">
+        <div className="workout-builder__success-toast">
           ✓ "{lastAddedWorkout}" added to your program!
         </div>
       )}
-      <div className="workout-draft-card">
-        <div className="draft-card-header">
-          <span className="draft-indicator">
-            {editingWorkoutId ? "✏️ Editing Workout" : "Building Workout"}
+      <div className="workout-builder__draft-card">
+        <div className="workout-builder__draft-header">
+          <span className="workout-builder__draft-indicator">
+            Building Workout
           </span>
           {currentWorkout.name && (
-            <span className="draft-title"> "{currentWorkout.name}"</span>
+            <span className="workout-builder__draft-title">
+              {" "}
+              "{currentWorkout.name}"
+            </span>
           )}
-          {/* Show cancel button when editing */}
-          {editingWorkoutId && (
-            <button onClick={onCancelEdit} className="btn-cancel-edit">
-              Cancel
-            </button>
-          )}
-          <div className="draft-card-body">
-            <div className="form-group">
-              <label>Workout Name</label>
+          <div className="workout-builder__draft-body">
+            <div className="workout-builder__form-group">
+              <label className="workout-builder__form-label">
+                Workout Name
+              </label>
               <input
                 type="text"
                 value={currentWorkout.name}
@@ -69,7 +69,7 @@ const WorkoutBuilder = ({
         />
 
         {currentWorkout.exercises.length > 0 && (
-          <div className="draft-exercises">
+          <div className="workout-builder__draft-exercises">
             <h4>
               Exercises in this workout ({currentWorkout.exercises.length})
             </h4>
@@ -79,7 +79,7 @@ const WorkoutBuilder = ({
             />
           </div>
         )}
-        <div className="draft-card-footer">
+        <div className="workout-builder__draft-footer">
           {currentWorkout.exercises.length > 0 && (
             <button onClick={onAddWorkout} className="btn-primary">
               Save "{currentWorkout.name || "Workout"}" to Program
@@ -90,14 +90,16 @@ const WorkoutBuilder = ({
       {/* Live Preview of Workouts */}
 
       {/* Saved Workouts Section */}
-      <div className="saved-workouts-section">
+      <div className="workout-builder__saved-workouts">
         <h3>
           ✓ Workouts in Your Program
-          <span className="workout-count">({program.workouts.length})</span>
+          {/* <span className="workout-builder__workout-count">
+            ({program.workouts.length})
+          </span> */}
         </h3>
 
         {program.workouts.length > 0 ? (
-          <div className="saved-workouts-list">
+          <div className="workout-builder__saved-workouts-list">
             {program.workouts.map((workout) => (
               <SavedWorkoutCard
                 key={workout.id}
@@ -111,7 +113,7 @@ const WorkoutBuilder = ({
             ))}
           </div>
         ) : (
-          <p className="empty-state">
+          <p className="workout-builder__empty-state">
             No workouts added yet. Complete the workout above to add it!
           </p>
         )}

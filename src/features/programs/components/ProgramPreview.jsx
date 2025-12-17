@@ -1,21 +1,26 @@
 import React from "react";
 import WorkoutPreview from "./WorkoutPreview";
+import "./styles/ProgramPreview.css";
 
 const ProgramPreview = ({ program, onRemoveWorkout }) => {
   return (
-    <div className="step-content">
-      <h2>Program Preview</h2>
-      <div className="program-preview">
-        <div className="preview-header">
+    <div className="program-preview__step-content">
+      <h2 className="program-preview__heading">Program Preview</h2>
+      <div className="program-preview__container">
+        <div className="program-preview__header">
           <h3>{program.name || "Untitled Program"}</h3>
-          <div className="program-meta">
-            <span className="duration">{program.duration} weeks</span>
-            <span className="difficulty">{program.difficulty}</span>
+          <div className="program-preview__meta">
+            <span className="program-preview__duration">
+              {program.duration} weeks
+            </span>
+            <span className="program-preview__difficulty">
+              {program.difficulty}
+            </span>
           </div>
-          <p className="description">{program.description}</p>
+          <p className="program-preview__description">{program.description}</p>
         </div>
 
-        <div className="workouts-preview">
+        <div className="program-preview__workouts">
           <h4>Workouts ({program.workouts.length})</h4>
           {program.workouts.map((workout) => (
             <WorkoutPreview
@@ -27,7 +32,7 @@ const ProgramPreview = ({ program, onRemoveWorkout }) => {
         </div>
 
         {program.workouts.length === 0 && (
-          <p className="no-workouts">
+          <p className="program-preview__no-workouts">
             No workouts added yet. Go back to add some workouts!
           </p>
         )}

@@ -1,0 +1,62 @@
+/* ProgramPreview.css - BEM naming convention for ProgramPreview component */
+
+/* Container - uses step-content from ProgramDetails */
+.program-preview__step-content {
+    padding: 0;
+    margin-bottom: var(--space-xl);
+}
+
+.program-preview__heading {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+/* Main preview container */
+.program-preview__container {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+/* Header section with program name and meta */
+.program-preview__header {
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+.program-preview__header h3 {
+    color: var(--color-primary);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-xs);
+}
+
+.program-preview__meta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.program-preview__meta span {
+    color: var(--color-primary);
+}
+
+.program-preview__description {
+    color: var(--color-text-primary);
+}
+
+/* Workouts section */
+.program-preview__workouts {
+    margin-top: var(--space-lg);
+}
+
+.program-preview__workouts h4 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+/* No workouts message */
+.program-preview__no-workouts {
+    color: var(--color-text-secondary);
+    font-style: italic;
+}

@@ -3,9 +3,9 @@ import "../components/styles/ProgramDetails.css";
 
 const ProgramDetails = ({ program, setProgram }) => {
   return (
-    <div className="step-content">
-      <h2>Program Details</h2>
-      <div className="form-group">
+    <div className="program-details__container">
+      <h2 className="program-details__heading">Program Details</h2>
+      <div className="program-details__form-group">
         <label>Program Name</label>
         <input
           type="text"
@@ -17,7 +17,7 @@ const ProgramDetails = ({ program, setProgram }) => {
           placeholder="Enter program name"
         />
       </div>
-      <div className="form-group">
+      <div className="program-details__form-group">
         <label>Description</label>
         <textarea
           value={program.description}
@@ -31,8 +31,8 @@ const ProgramDetails = ({ program, setProgram }) => {
           rows="3"
         />
       </div>
-      <div className="form-row">
-        <div className="form-group">
+      <div className="program-details__form-row">
+        <div className="program-details__form-group">
           <label>Duration (weeks)</label>
           <input
             required

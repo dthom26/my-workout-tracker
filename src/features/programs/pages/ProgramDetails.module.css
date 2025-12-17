@@ -1,0 +1,36 @@
+/* ProgramDetails.module.css - migrated styles from CreateProgram.css */
+
+.step-content {
+    /* background: var(--color-bg-secondary); */
+    /* border-radius: var(--radius-lg); */
+    padding: 0;
+    /* box-shadow: var(--shadow-sm); */
+    margin-bottom: var(--space-xl);
+}
+
+.edit-body .form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.edit-body .form-group input {
+    padding: var(--space-md);
+    font-size: var(--font-size-base);
+}
+
+.create-program-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+    align-items: end;
+}
+
+.create-program-form-row .btn-add {
+    height: 100%;
+}
+
+.create-program-form-row input {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./styles/SavedWorkoutCard.css";
 
 const SavedWorkoutCard = ({
   workout,
@@ -124,17 +125,23 @@ const SavedWorkoutCard = ({
 
   // ============ RENDER ============
   return (
-    <div className={`saved-workout-card ${isEditing ? "editing" : ""}`}>
+    <div
+      className={`saved-workout-card ${
+        isEditing ? "saved-workout-card--editing" : ""
+      }`}
+    >
       {isEditing ? (
         // ========== EDIT MODE ==========
-        <div className="saved-workout-edit-mode">
-          <div className="edit-header">
-            <span className="edit-indicator">✏️ Editing Workout</span>
+        <div className="saved-workout-card__edit-mode">
+          <div className="saved-workout-card__edit-header">
+            <span className="saved-workout-card__edit-indicator">
+              ✏️ Editing Workout
+            </span>
           </div>
 
-          <div className="edit-body">
+          <div className="saved-workout-card__edit-body">
             {/* Workout Name Input */}
-            <div className="form-group">
+            <div className="saved-workout-card__form-group">
               <label>Workout Name</label>
               <input
                 type="text"
@@ -149,7 +156,7 @@ const SavedWorkoutCard = ({
             </div>
 
             {/* Exercises List */}
-            <div className="edit-exercises">
+            <div className="saved-workout-card__edit-exercises">
               <h5>Exercises ({editedWorkout.exercises.length})</h5>
               <ul>
                 {editedWorkout.exercises.map((exercise) => {
@@ -159,12 +166,12 @@ const SavedWorkoutCard = ({
                   return (
                     <li
                       key={exercise.id}
-                      className="create-program-exercise-item"
+                      className="saved-workout-card__exercise-item"
                     >
                       {isEditingThisExercise ? (
                         // ===== EDIT MODE for individual exercise =====
-                        <div className="create-program-exercise-edit-form">
-                          <div className="create-program-form-row">
+                        <div className="saved-workout-card__exercise-edit-form">
+                          <div className="saved-workout-card__exercise-form-row">
                             <input
                               type="text"
                               value={editingExerciseData.name}
@@ -175,11 +182,11 @@ const SavedWorkoutCard = ({
                                 }))
                               }
                               placeholder="Exercise name"
-                              className="input-exercise-name"
+                              className="saved-workout-card__input-exercise-name"
                             />
                           </div>
 
-                          <div className="create-program-form-row">
+                          <div className="saved-workout-card__exercise-form-row">
                             <input
                               type="number"
                               value={editingExerciseData.sets.length}
@@ -201,11 +208,11 @@ const SavedWorkoutCard = ({
                               }}
                               placeholder="Sets"
                               min="1"
-                              className="input-sets"
+                              className="saved-workout-card__input-sets"
                             />
                           </div>
 
-                          <div className="create-program-form-row">
+                          <div className="saved-workout-card__exercise-form-row">
                             <input
                               type="text"
                               value={editingExerciseData.sets[0]?.reps || ""}
@@ -220,20 +227,20 @@ const SavedWorkoutCard = ({
                                 }));
                               }}
                               placeholder="Reps"
-                              className="input-reps"
+                              className="saved-workout-card__input-reps"
                             />
                           </div>
 
-                          <div className="create-program-exercise-edit-actions">
+                          <div className="saved-workout-card__exercise-edit-actions">
                             <button
                               onClick={handleSaveExercise}
-                              className="btn-save-exercise"
+                              className="saved-workout-card__btn-save-exercise"
                             >
                               ✓ Save
                             </button>
                             <button
                               onClick={handleCancelExercise}
-                              className="btn-cancel-exercise"
+                              className="saved-workout-card__btn-cancel-exercise"
                             >
                               Cancel
                             </button>
@@ -241,21 +248,21 @@ const SavedWorkoutCard = ({
                         </div>
                       ) : (
                         // ===== VIEW MODE for individual exercise =====
-                        <div className="create-program-exercise-view">
-                          <span className="create-program-exercise-info">
+                        <div className="saved-workout-card__exercise-view">
+                          <span className="saved-workout-card__exercise-info">
                             <strong>{exercise.name}</strong> -{" "}
                             {exercise.sets.length} sets
                           </span>
-                          <div className="create-program-exercise-actions">
+                          <div className="saved-workout-card__exercise-actions">
                             <button
                               onClick={() => handleEditExercise(exercise)}
-                              className="btn-edit-exercise"
+                              className="saved-workout-card__btn-edit-exercise"
                             >
                               ✏️
                             </button>
                             <button
                               onClick={() => handleDeleteExercise(exercise.id)}
-                              className="btn-delete-exercise"
+                              className="saved-workout-card__btn-delete-exercise"
                             >
                               🗑️
                             </button>
@@ -271,14 +278,14 @@ const SavedWorkoutCard = ({
               {!addingNewExercise ? (
                 <button
                   onClick={handleAddNewExercise}
-                  className="add-exercise-btn"
+                  className="saved-workout-card__add-exercise-btn"
                 >
                   ➕ Add Exercise
                 </button>
               ) : (
-                <div className="add-exercise-form">
+                <div className="saved-workout-card__add-exercise-form">
                   <h6>Add New Exercise</h6>
-                  <div className="create-program-form-row">
+                  <div className="saved-workout-card__exercise-form-row">
                     <input
                       type="text"
                       value={newExerciseData.name}
@@ -289,11 +296,11 @@ const SavedWorkoutCard = ({
                         }))
                       }
                       placeholder="Exercise name"
-                      className="input-exercise-name"
+                      className="saved-workout-card__input-exercise-name"
                     />
                   </div>
 
-                  <div className="create-program-form-row">
+                  <div className="saved-workout-card__exercise-form-row">
                     <input
                       type="number"
                       value={newExerciseData.sets}
@@ -305,11 +312,11 @@ const SavedWorkoutCard = ({
                       }
                       placeholder="Sets"
                       min="1"
-                      className="input-sets"
+                      className="saved-workout-card__input-sets"
                     />
                   </div>
 
-                  <div className="create-program-form-row">
+                  <div className="saved-workout-card__exercise-form-row">
                     <input
                       type="text"
                       value={newExerciseData.reps}
@@ -320,20 +327,20 @@ const SavedWorkoutCard = ({
                         }))
                       }
                       placeholder="Reps"
-                      className="input-reps"
+                      className="saved-workout-card__input-reps"
                     />
                   </div>
 
-                  <div className="create-program-exercise-edit-actions">
+                  <div className="saved-workout-card__exercise-edit-actions">
                     <button
                       onClick={handleSaveNewExercise}
-                      className="btn-save-exercise"
+                      className="saved-workout-card__btn-save-exercise"
                     >
                       ✓ Add
                     </button>
                     <button
                       onClick={handleCancelNewExercise}
-                      className="btn-cancel-exercise"
+                      className="saved-workout-card__btn-cancel-exercise"
                     >
                       Cancel
                     </button>
@@ -344,11 +351,17 @@ const SavedWorkoutCard = ({
           </div>
 
           {/* Workout-Level Save/Cancel */}
-          <div className="edit-actions">
-            <button onClick={handleSave} className="btn-save-workout">
+          <div className="saved-workout-card__edit-actions">
+            <button
+              onClick={handleSave}
+              className="saved-workout-card__btn-save-workout"
+            >
               💾 Save Changes
             </button>
-            <button onClick={onCancel} className="btn-cancel-workout">
+            <button
+              onClick={onCancel}
+              className="saved-workout-card__btn-cancel-workout"
+            >
               Cancel
             </button>
           </div>
@@ -356,11 +369,11 @@ const SavedWorkoutCard = ({
       ) : (
         // ========== VIEW MODE ==========
         <>
-          <div className="saved-workout-header">
+          <div className="saved-workout-card__header">
             <h4>{workout.name}</h4>
           </div>
 
-          <div className="saved-workout-exercises">
+          <div className="saved-workout-card__exercises">
             <ul>
               {workout.exercises.map((exercise) => (
                 <li key={exercise.id}>
@@ -370,8 +383,8 @@ const SavedWorkoutCard = ({
             </ul>
           </div>
 
-          <div className="saved-workout-actions">
-            <button onClick={onEdit} className="btn-edit-workout">
+          <div className="saved-workout-card__actions">
+            <button onClick={onEdit} className="saved-workout-card__btn-edit">
               ✏️ Edit
             </button>
             <button
@@ -383,7 +396,7 @@ const SavedWorkoutCard = ({
                   onDelete(workout.id);
                 }
               }}
-              className="btn-delete-workout"
+              className="saved-workout-card__btn-delete"
             >
               🗑️ Delete
             </button>

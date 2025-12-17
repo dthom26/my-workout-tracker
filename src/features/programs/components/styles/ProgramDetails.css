@@ -1,9 +1,109 @@
 /* ProgramDetails - Now using CSS Variables for theme support! */
+/* BEM naming convention for component-scoped styles */
 
-input:invalid {
+.program-details__container {
+    padding: 0;
+    margin-bottom: var(--space-xl);
+}
+
+.program-details__heading {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.program-details__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+}
+
+.program-details__form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Labels */
+.program-details__form-group label {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+/* Input Fields - Base styles */
+.program-details__form-group input,
+.program-details__form-group textarea,
+.program-details__form-group select {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+
+    /* Typography */
+    font-size: var(--font-size-base);
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+
+    /* Visual */
+    background: var(--color-bg-primary);
+    border: var(--border-width-default) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+
+    /* Transitions */
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Input States */
+.program-details__form-group input:focus,
+.program-details__form-group textarea:focus,
+.program-details__form-group select:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+.program-details__form-group input:disabled,
+.program-details__form-group textarea:disabled,
+.program-details__form-group select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: var(--color-bg-tertiary);
+}
+
+.program-details__form-group input::placeholder,
+.program-details__form-group textarea::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+/* Textarea specific */
+.program-details__form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Select specific */
+.program-details__form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23E0E0E0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-md) center;
+    padding-right: var(--space-2xl);
+}
+
+/* Form Row - Horizontal layout for multiple inputs */
+.program-details__form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+    align-items: end;
+}
+
+/* Validation styles */
+.program-details__form-group input:invalid {
     box-shadow: 0 0 5px 1px var(--color-error);
 }
 
-input:focus:invalid {
+.program-details__form-group input:focus:invalid {
     box-shadow: none;
 }

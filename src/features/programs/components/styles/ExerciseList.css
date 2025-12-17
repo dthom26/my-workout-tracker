@@ -1,0 +1,61 @@
+/* ExerciseList.css - BEM naming convention for ExerciseList component */
+
+/* Container for exercise list */
+.exercise-list__container {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+/* Individual exercise item */
+.exercise-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-sm);
+    margin-bottom: var(--space-xs);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    border-left: var(--border-width-thick) solid var(--color-success);
+    gap: var(--space-sm);
+}
+
+.exercise-list__item>span {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-right: var(--space-sm);
+    word-break: break-word;
+}
+
+/* Remove button - matches .btn-remove from global buttons.css */
+.exercise-list__remove-button {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: var(--border-width-thin) solid rgba(255, 82, 82, 0.08);
+    padding: var(--space-xs);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.exercise-list__remove-button:hover,
+.exercise-list__remove-button:focus {
+    background: var(--color-error-alpha);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+    outline: none;
+    box-shadow: var(--shadow-md);
+}
+
+.exercise-list__remove-button:active {
+    transform: translateY(0);
+    background: rgba(255, 82, 82, 0.16);
+}

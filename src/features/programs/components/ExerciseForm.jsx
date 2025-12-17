@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../../../../backend/config/firbase-config";
 import { repositoryFactory } from "../../../data/factory/repositoryFactory";
+import "./styles/ExerciseForm.css";
 
 const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
   const [templates, setTemplates] = useState([]);
@@ -26,11 +27,12 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
   }, []);
 
   return (
-    <div className="create-program-exercise-section">
-      <h3>Add Exercise</h3>
-      <div className="create-program-form-row">
+    <div className="exercise-form__section">
+      <h3 className="exercise-form__heading">Add Exercise</h3>
+      <div className="exercise-form__row">
         <input
           type="text"
+          className="exercise-form__input"
           value={exercise.name}
           onChange={(e) =>
             setExercise((prev) => ({
@@ -48,6 +50,7 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
         </datalist>
         <input
           type="number"
+          className="exercise-form__input"
           value={exercise.sets}
           onChange={(e) =>
             setExercise((prev) => ({
@@ -59,6 +62,7 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
         />
         <input
           type="text"
+          className="exercise-form__input"
           value={exercise.reps}
           onChange={(e) =>
             setExercise((prev) => ({
@@ -90,7 +94,11 @@ const ExerciseForm = ({ exercise, setExercise, onAddExercise }) => {
           }
           placeholder="Rest time"
         /> */}
-        <button type="button" onClick={onAddExercise} className="btn-add">
+        <button
+          type="button"
+          onClick={onAddExercise}
+          className="exercise-form__button"
+        >
           Add
         </button>
       </div>
