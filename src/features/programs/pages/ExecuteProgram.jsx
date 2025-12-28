@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 // import { useParams } from "react-router-dom"; // <-- Will use this for dynamic programId
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
 import { useParams } from "react-router-dom";
 import { DropdownMenu } from "../../../shared/components/DropdownBreadCrumb";
 import { repositoryFactory } from "../../../data/factory/repositoryFactory";

@@ -1,5 +1,6 @@
 // src/data/repositories/firebase/FirebaseWorkoutRepository.js
 import { WorkoutRepository } from "../../interfaces/WorkoutRepository";
+import { COLLECTIONS, FIELDS } from "@data/constants";
 import {
   doc,
   getDoc,
@@ -9,11 +10,11 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
 
 export class FirebaseWorkoutRepository extends WorkoutRepository {
   async getWorkout(workoutId) {
-    const docRef = doc(db, "workouts", workoutId);
+    const docRef = doc(db, FIELDS.WORKOUTS, workoutId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -24,14 +25,14 @@ export class FirebaseWorkoutRepository extends WorkoutRepository {
   }
 
   async saveWorkoutProgress(workoutId, progressData) {
-    const docRef = doc(db, "workouts", workoutId);
+    const docRef = doc(db, FIELDS.WORKOUTS, workoutId);
     await updateDoc(docRef, { progress: progressData });
     return true;
   }
 
   async addWorkoutToProgram(programId, workoutData) {
     try {
-      const docRef = doc(db, "programs", programId);
+      const docRef = doc(db, COLLECTIONS.PROGRAMS, programId);
       const docSnap = await getDoc(docRef);
       if (!docSnap.exists()) {
         throw new Error(`Program with ID ${programId} not found`);
@@ -50,7 +51,7 @@ export class FirebaseWorkoutRepository extends WorkoutRepository {
 
   async updateWorkoutName(programId, workoutId, newName) {
     try {
-      const docRef = doc(db, "programs", programId);
+      const docRef = doc(db, COLLECTIONS.PROGRAMS, programId);
       const docSnap = await getDoc(docRef);
       if (!docSnap.exists()) {
         throw new Error(`Program with ID ${programId} not found`);
@@ -76,7 +77,7 @@ export class FirebaseWorkoutRepository extends WorkoutRepository {
         return null; // No previous week for week 1
       }
 
-      const sessionsRef = collection(db, "sessions");
+      const sessionsRef = collection(db, COLLECTIONS.SESSIONS);
       const q = query(
         sessionsRef,
         where("userId", "==", userId),
@@ -112,7 +113,7 @@ export class FirebaseWorkoutRepository extends WorkoutRepository {
 
   async getSessionByTemplateAndWeek(userId, workoutTemplateId, week) {
     try {
-      const sessionsRef = collection(db, "sessions");
+      const sessionsRef = collection(db, COLLECTIONS.SESSIONS);
       const q = query(
         sessionsRef,
         where("userId", "==", userId),

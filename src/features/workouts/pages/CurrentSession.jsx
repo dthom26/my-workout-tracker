@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import "./CurrentSession.css";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
 import { useAuth } from "../../auth/context/AuthContext";
 import {
   saveSessionToFirestore,

@@ -19,10 +19,6 @@ function App() {
           path="/CurrentSession/:programId/:workoutId"
           element={<CurrentSession />}
         />
-        <Route
-          path="/CurrentSession/:programId/:workoutId/:week"
-          element={<CurrentSession />}
-        />
         <Route path="/ListOfUsersPrograms" element={<ListOfUsersPrograms />} />
       </Routes>
     </AuthProvider>

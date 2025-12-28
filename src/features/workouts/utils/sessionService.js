@@ -1,6 +1,7 @@
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import TemplateService from "./templateService";
+import { COLLECTIONS } from "@/data/constants";
 
 const templateService = new TemplateService();
 
@@ -26,7 +27,9 @@ export async function saveSessionToFirestore(sessionData) {
     }
 
     // Save session with processed exercises
-    await setDoc(doc(db, "sessions", sessionId), sessionData, { merge: true });
+    await setDoc(doc(db, COLLECTIONS.SESSIONS, sessionId), sessionData, {
+      merge: true,
+    });
     console.log("Session saved:", sessionData, "Document ID:", sessionId);
     return sessionId;
   } catch (error) {
@@ -55,7 +58,7 @@ export async function getSessionFromFirestore(
 ) {
   const sessionId = generateSessionId(userId, programId, workoutId, week);
   try {
-    const sessionRef = doc(db, "sessions", sessionId);
+    const sessionRef = doc(db, COLLECTIONS.SESSIONS, sessionId);
     const sessionSnap = await getDoc(sessionRef);
 
     if (sessionSnap.exists()) {

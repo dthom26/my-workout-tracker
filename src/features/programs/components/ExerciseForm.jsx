@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../../../../backend/config/firbase-config";
+import { auth } from "@backend/config/firebase-config";
 import { repositoryFactory } from "../../../data/factory/repositoryFactory";
 import "./styles/ExerciseForm.css";
 

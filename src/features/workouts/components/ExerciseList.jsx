@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import DropdownMenu from "./DropdownMenu.jsx";
 import CollapsedExerciseCard from "./CollapsedExerciseCard.jsx";
-import { auth } from "../../../../backend/config/firbase-config";
+import { auth } from "@backend/config/firebase-config";
 import { repositoryFactory } from "../../../data/factory/repositoryFactory";
 const ExerciseList = ({ exercises, setWorkout, handleDeleteExercise }) => {
   const [editingExerciseId, setEditingExerciseId] = useState(null);

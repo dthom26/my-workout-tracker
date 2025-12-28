@@ -49,7 +49,8 @@ const PreviousWeekSummary = ({
   const formatSetDisplay = (set) => {
     const weight = set.weight ? `${set.weight}lbs` : "BW";
     const reps = set.reps || "0";
-    return `${weight} × ${reps}`;
+    const rir = set.rir !== undefined ? ` (RIR: ${set.rir})` : "";
+    return `${weight} × ${reps} ${rir}`;
   };
   console.log("PreviousWeekSummary previousSession:", previousSession);
   return (

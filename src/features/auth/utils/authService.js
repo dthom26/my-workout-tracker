@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../../../../backend/config/firbase-config";
+import { auth } from "@backend/config/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
+import { COLLECTIONS } from "@/data/constants";
 
 /**
  * Sign up a new user with email and password
@@ -18,7 +19,7 @@ export const signUpWithEmail = async (email, password) => {
   const user = userCredential.user;
 
   // Create user document in Firestore
-  const docRef = doc(db, "users", user.uid);
+  const docRef = doc(db, COLLECTIONS.USERS, user.uid);
   await setDoc(
     docRef,
     {

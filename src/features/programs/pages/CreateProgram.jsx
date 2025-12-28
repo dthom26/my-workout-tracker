@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../../../backend/config/firbase-config";
+import { auth } from "@backend/config/firebase-config";
 import { saveProgramToFirestore } from "../utils/programService";
 import { repositoryFactory } from "../../../data/factory/repositoryFactory";
 import ProgramDetails from "../components/ProgramDetails";

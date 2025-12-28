@@ -9,8 +9,9 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../../../../backend/config/firbase-config";
+import { db } from "@backend/config/firebase-config";
 import standardizeTextInput from "../../../shared/utils/textInputStandardization";
+import { COLLECTIONS } from "@data/constants";
 
 /**
  * Firebase implementation of the Exercise Template Repository
@@ -55,7 +56,12 @@ export default class FirebaseExerciseTemplateRepository extends ExerciseTemplate
     }
 
     // Then check by standardized name
-    const templatesRef = collection(db, "users", userId, "exerciseTemplates");
+    const templatesRef = collection(
+      db,
+      COLLECTIONS.USERS,
+      userId,
+      COLLECTIONS.EXERCISE_TEMPLATES
+    );
     const nameQuery = query(
       templatesRef,
       where("standardizedName", "==", standardizedName)
@@ -105,7 +111,12 @@ export default class FirebaseExerciseTemplateRepository extends ExerciseTemplate
       userId,
     };
 
-    const templatesRef = collection(db, "users", userId, "exerciseTemplates");
+    const templatesRef = collection(
+      db,
+      COLLECTIONS.USERS,
+      userId,
+      COLLECTIONS.EXERCISE_TEMPLATES
+    );
     const docRef = await addDoc(templatesRef, template);
     const newTemplate = { id: docRef.id, ...template };
 
@@ -148,9 +159,9 @@ export default class FirebaseExerciseTemplateRepository extends ExerciseTemplate
     try {
       const templateRef = doc(
         db,
-        "users",
+        COLLECTIONS.USERS,
         userId,
-        "exerciseTemplates",
+        COLLECTIONS.EXERCISE_TEMPLATES,
         templateId
       );
       const snapshot = await getDoc(templateRef);
@@ -175,7 +186,12 @@ export default class FirebaseExerciseTemplateRepository extends ExerciseTemplate
   async getExerciseTemplates(userId) {
     try {
       // Get all templates for this user
-      const templatesRef = collection(db, "users", userId, "exerciseTemplates");
+      const templatesRef = collection(
+        db,
+        COLLECTIONS.USERS,
+        userId,
+        COLLECTIONS.EXERCISE_TEMPLATES
+      );
       const snapshot = await getDocs(templatesRef);
 
       // Map documents to objects with IDs
@@ -202,9 +218,9 @@ export default class FirebaseExerciseTemplateRepository extends ExerciseTemplate
       // Update document with merge (preserves fields not specified in data)
       const templateRef = doc(
         db,
-        "users",
+        COLLECTIONS.USERS,
         userId,
-        "exerciseTemplates",
+        COLLECTIONS.EXERCISE_TEMPLATES,
         templateId
       );
       await setDoc(templateRef, data, { merge: true });

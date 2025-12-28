@@ -6,7 +6,7 @@
 //   getDocs,
 //   onSnapshot,
 // } from "firebase/firestore";
-// import { db } from "../../../../backend/config/firbase-config";
+// import { db } from "@backend/config/firebase-config";
 // import { useAuth } from "../../auth/context/AuthContext";
 
 // export function useUserPrograms() {
@@ -21,7 +21,7 @@
 //     setLoading(true);
 //     try {
 //       const q = query(
-//         collection(db, "programs"),
+//         collection(db, COLLECTIONS.PROGRAMS),
 //         where("createdBy", "==", user.uid)
 //       );
 //       const querySnapshot = await getDocs(q);
@@ -48,7 +48,7 @@
 
 //     // Real-time listener keeps UI in sync; also perform initial fetch
 //     const q = query(
-//       collection(db, "programs"),
+//       collection(db, COLLECTIONS.PROGRAMS),
 //       where("createdBy", "==", user.uid)
 //     );
 
