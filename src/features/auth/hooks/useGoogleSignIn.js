@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { signInWithGoogle } from "../utils/SignIn";
+import { useAuth } from "../context/AuthContext";
 
 export function useGoogleSignIn() {
   const navigate = useNavigate();
+  const { signInWithGoogle } = useAuth();
 
   const handleGoogleSignIn = async () => {
     try {

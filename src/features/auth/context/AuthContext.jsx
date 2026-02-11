@@ -1,16 +1,25 @@
-import React, { createContext, useContext } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
-import { auth } from "@backend/config/firebase-config";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { userService } from "../../../services/UserService";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = userService.onAuthStateChanged((user) => {
+      setUser(user);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
 
   const logout = async () => {
     try {
-      await signOut(auth);
+      await userService.signOut();
       console.log("User signed out successfully");
     } catch (error) {
       console.error("Error signing out:", error);
@@ -18,13 +27,26 @@ export function AuthProvider({ children }) {
     }
   };
 
-  return (
-    <AuthContext.Provider value={{ user, loading, error, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = {
+    user,
+    loading,
+    error,
+    logout,
+    // Expose service methods for components to use
+    signInWithEmail: userService.signInWithEmail.bind(userService),
+    signUpWithEmail: userService.signUpWithEmail.bind(userService),
+    signInWithGoogle: userService.signInWithGoogle.bind(userService),
+    getUserProfile: userService.getUserProfile.bind(userService),
+    updateUserProfile: userService.updateUserProfile.bind(userService),
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 }

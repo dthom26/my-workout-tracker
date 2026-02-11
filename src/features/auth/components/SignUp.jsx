@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { signUpWithEmail } from "../utils/authService";
+import { useAuth } from "../context/AuthContext";
 import {
   validatePasswordLocal,
   validateEmail,
@@ -15,6 +15,7 @@ const SignUp = ({ className }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const { signUp } = useAuth();
 
   // Validate password in real-time
   useEffect(() => {
@@ -68,7 +69,7 @@ const SignUp = ({ className }) => {
     }
 
     try {
-      await signUpWithEmail(email, password);
+      await signUp(email, password);
       navigate("/dashboard");
     } catch (error) {
       // Handle specific Firebase errors

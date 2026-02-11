@@ -1,17 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { loginWithEmailAndPassword } from "../utils/signInWithPasswordAndEmail";
+import { useAuth } from "../context/AuthContext";
 
 const Login = ({ className }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginWithEmailAndPassword(email, password);
+      await signIn(email, password);
       navigate("/dashboard"); // Redirect after successful login
     } catch (error) {
       alert("Login failed: " + error.message);
