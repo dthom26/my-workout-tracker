@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGoogleSignIn } from "../hooks/useGoogleSignIn";
-import Login from "../components/login";
+import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import "../styles/index.css";
 import "../styles/form.css";
