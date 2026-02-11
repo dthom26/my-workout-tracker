@@ -14,8 +14,10 @@ const Auth = () => {
       <div className="auth-card">
         <div className="auth-title">{showLogin ? "Login" : "Sign Up"}</div>
         <div className="auth-form-wrapper">
-          <Login className={`auth-form${showLogin ? " active" : ""}`} />
-          <SignUp className={`auth-form${!showLogin ? " active" : ""}`} />
+          {/* <Login className={`auth-form${showLogin ? " active" : ""}`} />
+          <SignUp className={`auth-form${!showLogin ? " active" : ""}`} /> */}
+          App is currently in beta and only supports Google Sign-In. Please use
+          the button below to sign in with your Google account.
         </div>
         <button
           className="auth-btn auth-btn-google"
